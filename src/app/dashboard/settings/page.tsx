@@ -2,24 +2,18 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { PageHeader } from '@/components/shared/page-header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Settings as SettingsIcon, User, Bell, Palette, Loader2, AlertTriangle } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { db } from '@/lib/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
 // import { useTheme } from 'next-themes'; // Not strictly needed if directly managing localStorage and DOM class for next-themes
-
-const SETTINGS_COLLECTION = 'user_settings';
-const USER_SETTINGS_DOC_ID = 'main_user_profile'; // Using a fixed ID for demo purposes
 
 const settingsSchema = z.object({
   fullName: z.string().min(1, 'Full name is required.'),
@@ -34,9 +28,8 @@ type SettingsFormValues = z.infer<typeof settingsSchema>;
 
 export default function SettingsPage() {
   const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Keep for initial setup, but no async data fetching
   const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   // const { setTheme } = useTheme(); // Can be used as an alternative to direct localStorage/DOM manipulation
 
   const form = useForm<SettingsFormValues>({
@@ -47,87 +40,55 @@ export default function SettingsPage() {
       emailNotifications: true,
       pushNotifications: false,
       weeklySummary: true,
-      darkMode: false, // Initial default, will be overridden by loaded settings or current theme
+      darkMode: false, // Initial default, will be overridden by localStorage or system preference
     },
   });
 
   useEffect(() => {
-    const loadSettings = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const docRef = doc(db, SETTINGS_COLLECTION, USER_SETTINGS_DOC_ID);
-        const docSnap = await getDoc(docRef);
+    // Load dark mode preference from localStorage or system
+    // Other settings will use RHF defaultValues as they are no longer persistent
+    setIsLoading(true);
+    
+    let determinedDarkModeForSwitch = false;
+    const currentThemeInLocalStorage = localStorage.getItem('theme');
+    
+    if (currentThemeInLocalStorage === 'dark') {
+      determinedDarkModeForSwitch = true;
+    } else if (currentThemeInLocalStorage === 'light') {
+      determinedDarkModeForSwitch = false;
+    } else {
+      // Fallback if localStorage.getItem('theme') is null (e.g. ThemeProvider used system & set it)
+      // or next-themes hasn't hydrated/set it yet. Check system preference.
+      determinedDarkModeForSwitch = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+      // Ensure localStorage is set so next-themes picks it up consistently.
+      localStorage.setItem('theme', determinedDarkModeForSwitch ? 'dark' : 'light');
+    }
+    
+    form.setValue('darkMode', determinedDarkModeForSwitch, { shouldDirty: false });
 
-        let determinedDarkModeForSwitch = false;
-
-        if (docSnap.exists()) {
-          const data = docSnap.data() as SettingsFormValues;
-          form.reset(data); // Populates the entire form, including 'darkMode' switch from Firestore
-          determinedDarkModeForSwitch = data.darkMode; // User's saved preference
-
-          // Sync next-themes (localStorage) and DOM with this saved preference
-          const themeToApply = determinedDarkModeForSwitch ? 'dark' : 'light';
-          localStorage.setItem('theme', themeToApply);
-          if (determinedDarkModeForSwitch) {
-            if (!document.documentElement.classList.contains('dark')) document.documentElement.classList.add('dark');
-          } else {
-            if (document.documentElement.classList.contains('dark')) document.documentElement.classList.remove('dark');
-          }
-        } else {
-          // No settings in Firestore.
-          // next-themes has initialized using localStorage or system preference.
-          // localStorage.getItem('theme') should reflect what next-themes is using.
-          const currentThemeInLocalStorage = localStorage.getItem('theme');
-          
-          if (currentThemeInLocalStorage === 'dark') {
-            determinedDarkModeForSwitch = true;
-          } else if (currentThemeInLocalStorage === 'light') {
-            determinedDarkModeForSwitch = false;
-          } else {
-            // Fallback if localStorage.getItem('theme') is null (e.g. ThemeProvider used system & set it)
-            // or next-themes hasn't hydrated/set it yet. Check system preference.
-            determinedDarkModeForSwitch = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-            // Ensure localStorage is set so next-themes picks it up consistently.
-            localStorage.setItem('theme', determinedDarkModeForSwitch ? 'dark' : 'light');
-          }
-          
-          form.setValue('darkMode', determinedDarkModeForSwitch, { shouldDirty: false });
-
-          // Ensure DOM matches, though next-themes should handle this if localStorage was just set.
-          if (determinedDarkModeForSwitch) {
-             if (!document.documentElement.classList.contains('dark')) document.documentElement.classList.add('dark');
-          } else {
-             if (document.documentElement.classList.contains('dark')) document.documentElement.classList.remove('dark');
-          }
-        }
-      } catch (err) {
-        console.error("Failed to load settings:", err);
-        setError("Failed to load settings. Please try again later.");
-        toast({
-          title: "Error",
-          description: "Could not load your settings.",
-          variant: "destructive",
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadSettings();
+    // Ensure DOM matches, though next-themes should handle this if localStorage was just set.
+    if (determinedDarkModeForSwitch) {
+        if (!document.documentElement.classList.contains('dark')) document.documentElement.classList.add('dark');
+    } else {
+        if (document.documentElement.classList.contains('dark')) document.documentElement.classList.remove('dark');
+    }
+    
+    setIsLoading(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form, toast]); // Use 'form' object as dependency
+  }, [form]); 
 
 
   const onSubmit: SubmitHandler<SettingsFormValues> = async (data) => {
     setIsSaving(true);
-    setError(null);
     try {
-      const docRef = doc(db, SETTINGS_COLLECTION, USER_SETTINGS_DOC_ID);
-      await setDoc(docRef, data, { merge: true });
+      // Simulate saving
+      await new Promise(resolve => setTimeout(resolve, 500));
+
       toast({
         title: "Settings Saved",
-        description: "Your preferences have been updated successfully.",
+        description: "Your preferences have been updated locally.",
       });
+      
       // Ensure localStorage theme and DOM is synced with saved dark mode preference
       const themeToApply = data.darkMode ? 'dark' : 'light';
       localStorage.setItem('theme', themeToApply);
@@ -138,9 +99,10 @@ export default function SettingsPage() {
         document.documentElement.classList.remove('dark');
       }
     } catch (err) {
-      console.error("Failed to save settings:", err);
+      // This catch block is less likely to be hit without backend calls,
+      // but kept for robustness in case of future local saving logic errors.
+      console.error("Failed to save settings locally:", err);
       const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred while saving.";
-      setError(errorMessage);
       toast({
         title: "Error Saving Settings",
         description: errorMessage,
@@ -151,7 +113,7 @@ export default function SettingsPage() {
     }
   };
 
-  if (isLoading) {
+  if (isLoading) { // This loading state is very brief now
     return (
       <>
         <PageHeader
@@ -166,31 +128,6 @@ export default function SettingsPage() {
     );
   }
   
-  if (error && !isLoading) {
-      return (
-         <>
-            <PageHeader
-              title="Settings"
-              description="Manage your account settings and preferences."
-              icon={SettingsIcon}
-            />
-            <Card className="shadow-lg border-destructive">
-              <CardHeader className="flex-row items-center gap-2">
-                 <AlertTriangle className="h-6 w-6 text-destructive" />
-                <CardTitle className="text-destructive">Failed to Load Settings</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-destructive-foreground">{error}</p>
-                <Button variant="outline" onClick={() => window.location.reload()} className="mt-4">
-                    Try Again
-                </Button>
-              </CardContent>
-            </Card>
-        </>
-      )
-  }
-
-
   return (
     <>
       <PageHeader
@@ -343,4 +280,3 @@ export default function SettingsPage() {
     </>
   );
 }
-

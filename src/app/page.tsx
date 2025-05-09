@@ -41,7 +41,10 @@ import {
   ShoppingCart,
   Contact,
   UserCircle2,
-  Home
+  Home,
+  Building, // For Brands
+  Megaphone, // For Campaigns
+  Link2 as LinkIcon, // For Affiliate Links
 } from 'lucide-react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -51,22 +54,22 @@ import { PromoMarketLogo } from '@/components/icons/promomarket-logo';
 
 const featureCards = [
   {
-    icon: Zap,
-    title: 'AI-Powered Promo Tools',
-    description: 'Leverage cutting-edge AI for product recommendations and content generation to boost your digital marketing efforts.',
+    icon: Brain, // Changed from Zap
+    title: 'AI-Powered Promotion Suite',
+    description: 'Leverage AI for item recommendations, content generation, and campaign insights to maximize your promotional impact.',
     dataAiHint: 'artificial intelligence technology'
   },
   {
     icon: BarChartBig,
-    title: 'Comprehensive Promo Tracking',
-    description: 'Monitor your promotion earnings, clicks, and conversions with our detailed analytics and reporting features.',
+    title: 'Comprehensive Analytics',
+    description: 'Track earnings, link clicks, campaign conversions, and content performance with detailed reporting.',
     dataAiHint: 'data analytics chart'
   },
   {
-    icon: MessageSquare,
-    title: 'Seamless Integration',
-    description: 'Easily connect with affiliate programs and manage your promotional campaigns all in one centralized platform.',
-    dataAiHint: 'connected network integration'
+    icon: LayoutGrid, // Changed from MessageSquare
+    title: 'Centralized Management',
+    description: 'Manage brands, promotional items, affiliate links, campaigns, and content all in one unified platform.',
+    dataAiHint: 'dashboard interface'
   },
 ];
 
@@ -74,21 +77,21 @@ const howItWorksSteps = [
   {
     step: 1,
     title: 'Sign Up & Setup',
-    description: 'Create your PromoMarket account in minutes and configure your profile to get started on your promotional journey.',
+    description: 'Create your PromoMarket account and configure your profile to access powerful promotional tools.',
     image: 'https://picsum.photos/300/200?grayscale&random=1',
     dataAiHint: 'user registration interface'
   },
   {
     step: 2,
-    title: 'Explore & Generate',
-    description: 'Utilize AI tools to find promotional opportunities and generate engaging marketing content effortlessly.',
+    title: 'Discover & Create',
+    description: 'Explore promotional items, generate affiliate links, create campaigns, and use AI to craft marketing content.',
     image: 'https://picsum.photos/300/200?grayscale&random=2',
     dataAiHint: 'creative process tools'
   },
   {
     step: 3,
     title: 'Track & Optimize',
-    description: 'Monitor your promotional performance with real-time analytics and optimize your strategies for maximum impact.',
+    description: 'Monitor performance with real-time analytics and refine your strategies for maximum earnings and impact.',
     image: 'https://picsum.photos/300/200?grayscale&random=3',
     dataAiHint: 'dashboard analytics progress'
   },
@@ -97,22 +100,22 @@ const howItWorksSteps = [
 const testimonialCards = [
   {
     name: 'Alex P.',
-    role: 'Digital Marketer',
-    quote: "PromoMarket's AI tools have revolutionized how I approach content creation for promotions. My conversion rates are up by 30%!",
+    role: 'Affiliate Marketer',
+    quote: "PromoMarket's AI tools for item discovery and content generation are incredible. My earnings have significantly increased!",
     avatar: 'https://picsum.photos/100/100?grayscale&random=4',
     dataAiHint: 'professional portrait man'
   },
   {
     name: 'Sarah K.',
-    role: 'Content Strategist',
-    quote: "The earnings tracker is incredibly detailed and helps me understand exactly which promotions are working. Highly recommended!",
+    role: 'Content Creator',
+    quote: "The platform makes it so easy to manage my promotional content and track ad revenue. A must-have for creators!",
     avatar: 'https://picsum.photos/100/100?grayscale&random=5',
     dataAiHint: 'professional portrait woman'
   },
   {
     name: 'Mike L.',
-    role: 'Online Entrepreneur',
-    quote: "Managing multiple promotional links was a headache. PromoMarket streamlined everything. A game changer for my digital marketing!",
+    role: 'Campaign Manager',
+    quote: "Managing multiple campaigns and their affiliate links was complex. PromoMarket streamlined everything. Highly efficient!",
     avatar: 'https://picsum.photos/100/100?grayscale&random=6',
     dataAiHint: 'smiling person outdoor'
   },
@@ -122,10 +125,10 @@ const HeroSection = () => (
   <section className="container mx-auto px-6 md:px-10 py-12 md:py-24 flex flex-col md:flex-row items-center">
     <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
       <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-        Unlock Your Digital Marketing Potential
+        Elevate Your Digital Market Promotions
       </h2>
       <p className="text-lg text-muted-foreground mb-8">
-        PromoMarket is your dynamic platform to master digital market promotion. Drive growth, engage audiences, and maximize your online impact.
+        PromoMarket is your ultimate platform to manage brands, discover promotional items, launch campaigns, and track earnings. Maximize your online impact with AI-driven tools.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
         <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -143,7 +146,7 @@ const HeroSection = () => (
     <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
       <Image
         src="https://picsum.photos/600/400?grayscale&blur=1&random=hero"
-        alt="Digital Marketing Promotion"
+        alt="Digital Marketing Promotion Platform"
         width={600}
         height={400}
         data-ai-hint="digital marketing business"
@@ -214,7 +217,7 @@ const TestimonialsSection = () => (
   <section className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Loved by Digital Marketers & Creators</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Loved by Promoters & Creators</h2>
         <p className="text-lg text-muted-foreground mt-2">See what our users are saying about PromoMarket.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
@@ -240,7 +243,7 @@ const TestimonialsSection = () => (
       </div>
       <div className="text-center mt-12">
         <Button variant="outline" size="lg" asChild>
-          <Link href="/#testimonials-more">
+          <Link href="#testimonials-more"> {/* Placeholder link */}
             Read More Testimonials <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
@@ -249,28 +252,24 @@ const TestimonialsSection = () => (
   </section>
 );
 
-const AdvancedAICapabilitiesSection = () => (
-  <section id="advanced-ai" className="py-16 md:py-24 bg-background">
-    <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
+// Placeholder for additional sections to reach 20 total. 
+// Actual content would depend on specific aspects of "EarnHub" to highlight.
+const PlaceholderSection = ({ title, icon: Icon, description, imageHint, imageUrlSeed }: { title: string, icon: React.ElementType, description: string, imageHint: string, imageUrlSeed: string }) => (
+  <section className="py-16 md:py-24 odd:bg-background even:bg-secondary">
+    <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12 odd:md:flex-row-reverse">
       <div className="md:w-1/2">
-        <Brain className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Unlock Advanced AI for Promotion</h2>
-        <p className="text-lg text-muted-foreground mb-6">
-          Go beyond basic tools with PromoMarket’s sophisticated AI. Predict market trends, segment audiences with precision, and receive data-driven insights to optimize your promotional strategies for peak performance.
-        </p>
-        <ul className="space-y-2 text-muted-foreground">
-          <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-2" /> AI-driven trend prediction</li>
-          <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-2" /> Intelligent audience segmentation</li>
-          <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-2" /> Automated content personalization</li>
-        </ul>
+        <Icon className="h-12 w-12 text-primary mb-4" />
+        <h2 className="text-3xl font-bold text-foreground mb-4">{title}</h2>
+        <p className="text-lg text-muted-foreground mb-6">{description}</p>
+         <Button variant="link" asChild><Link href="/client/home">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Link></Button>
       </div>
       <div className="md:w-1/2">
         <Image
-          src="https://picsum.photos/500/350?grayscale&random=ai"
-          alt="Advanced AI for Promotion"
+          src={`https://picsum.photos/500/350?grayscale&random=${imageUrlSeed}`}
+          alt={title}
           width={500}
           height={350}
-          data-ai-hint="AI brain network"
+          data-ai-hint={imageHint}
           className="rounded-xl shadow-xl"
         />
       </div>
@@ -278,405 +277,48 @@ const AdvancedAICapabilitiesSection = () => (
   </section>
 );
 
-const MultiPlatformIntegrationSection = () => (
-  <section id="multi-platform" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10 text-center">
-      <Share2 className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Seamless Multi-Platform Promotion</h2>
-      <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-        Connect PromoMarket with your favorite e-commerce platforms, social media channels, and marketing tools. Manage all your promotional activities and campaigns from one unified dashboard.
-      </p>
-      <div className="flex flex-wrap justify-center items-center gap-8">
-        <Image src="https://picsum.photos/seed/platform1/200/120?grayscale" alt="Platform Integration 1" width={200} height={120} data-ai-hint="connected devices" className="rounded-lg shadow-md"/>
-        <Image src="https://picsum.photos/seed/platform2/200/120?grayscale" alt="Platform Integration 2" width={200} height={120} data-ai-hint="social media" className="rounded-lg shadow-md"/>
-        <Image src="https://picsum.photos/seed/platform3/200/120?grayscale" alt="Platform Integration 3" width={200} height={120} data-ai-hint="ecommerce icons" className="rounded-lg shadow-md"/>
-      </div>
-    </div>
-  </section>
-);
 
-const CustomizableDashboardsSection = () => (
-  <section id="custom-dashboards" className="py-16 md:py-24 bg-background">
-    <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row-reverse items-center gap-12">
-      <div className="md:w-1/2">
-        <LayoutGrid className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Your Promo Dashboard, Your Way</h2>
-        <p className="text-lg text-muted-foreground mb-6">
-          Personalize your PromoMarket dashboard to see the metrics that matter most to your promotional efforts. Arrange widgets, choose data visualizations, and create a workspace that fits your unique workflow.
-        </p>
-        <Button variant="outline" asChild>
-          <Link href="/dashboard">
-            Customize Your Dashboard <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
-      <div className="md:w-1/2">
-        <Image
-          src="https://picsum.photos/500/350?grayscale&random=dashboard"
-          alt="Customizable Promo Dashboard"
-          width={500}
-          height={350}
-          data-ai-hint="dashboard interface"
-          className="rounded-xl shadow-xl"
-        />
-      </div>
-    </div>
-  </section>
-);
+const additionalSectionsData = [
+  { title: "Brand Management Hub", icon: Building, description: "Organize and manage all the brands you collaborate with for promotions, all in one place.", imageHint: "brand logos collage", imageUrlSeed: "brands" },
+  { title: "Promotional Item Discovery", icon: ShoppingCart, description: "Explore a diverse catalog of products, services, and digital goods ready for promotion.", imageHint: "product showcase", imageUrlSeed: "promoitems" },
+  { title: "Dynamic Campaign Creation", icon: Megaphone, description: "Launch targeted promotional campaigns with customizable parameters and track their progress.", imageHint: "campaign planning", imageUrlSeed: "campaigns" },
+  { title: "Smart Affiliate Link Generation", icon: LinkIcon, description: "Easily create and manage unique affiliate links for every promotional item and campaign.", imageHint: "link network", imageUrlSeed: "links" },
+  { title: "Content Monetization Tools", icon: FileText, description: "Integrate promotional content and track ad revenue alongside your affiliate earnings.", imageHint: "writing tools", imageUrlSeed: "contenttools" },
+  { title: "Advanced Trend Prediction", icon: Lightbulb, description: "Stay ahead with AI-driven insights into market trends and profitable niches for promotion.", imageHint: "future graph", imageUrlSeed: "trends" },
+  { title: "Multi-Platform Integration", icon: Share2, description: "Connect PromoMarket with your favorite e-commerce platforms, social media, and marketing tools.", imageHint: "connected devices", imageUrlSeed: "integration" },
+  { title: "Customizable Dashboards", icon: LayoutGrid, description: "Personalize your dashboard to see the metrics that matter most for your promotional efforts.", imageHint: "dashboard interface", imageUrlSeed: "dashboards" },
+  { title: "Deep Dive Analytics Suite", icon: PieChart, description: "Go beyond surface-level data with granular insights into campaign performance and customer behavior.", imageHint: "analytics charts", imageUrlSeed: "deepanalytics" },
+  { title: "Versatile Content Generation AI", icon: Type, description: "Create blog posts, social media updates, email campaigns, and ad copy with AI assistance.", imageHint: "ai writing", imageUrlSeed: "aicontent" },
+  { title: "For Affiliate Marketers", icon: Target, description: "Specialized tools for link management, commission tracking, and discovering high-impact items.", imageHint: "marketing strategy", imageUrlSeed: "affiliates" },
+  { title: "Empowering Content Creators", icon: Camera, description: "Monetize your passion by finding relevant items to promote and track earnings from your content.", imageHint: "creative workspace", imageUrlSeed: "creators" },
+  { title: "Growth for Entrepreneurs", icon: Briefcase, description: "Scale your online ventures by diversifying promotional channels and optimizing marketing spend.", imageHint: "business growth", imageUrlSeed: "entrepreneurs" },
+  { title: "Success Stories & Case Studies", icon: Award, description: "Discover how users have transformed their digital promotions and earnings with PromoMarket.", imageHint: "success trophy", imageUrlSeed: "success" },
+  { title: "Robust Security & Reliability", icon: Server, description: "Your data security and platform reliability are our top priorities, with industry-standard measures.", imageHint: "data security", imageUrlSeed: "security" },
+  { title: "Community & Support", icon: Users2, description: "Connect with fellow users, share strategies, and get support from our active community and helpdesk.", imageHint: "community people", imageUrlSeed: "community" },
+];
 
-const DeepDiveAnalyticsSection = () => (
-  <section id="deep-analytics" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10">
-      <div className="text-center mb-12">
-        <PieChart className="h-12 w-12 text-primary mb-4 mx-auto" />
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Deep Dive Promotional Analytics</h2>
-        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Go beyond surface-level data. Our comprehensive analytics suite provides granular insights into campaign performance, customer behavior, conversion funnels for your promotions.
-        </p>
-      </div>
-      <div className="grid md:grid-cols-3 gap-8">
-        <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader><CardTitle className="flex items-center gap-2"><AreaChart className="h-6 w-6 text-accent"/> Performance Metrics</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Track clicks, conversions, EPC, and ROI in real-time for all promotions.</p></CardContent>
-        </Card>
-        <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader><CardTitle className="flex items-center gap-2"><Users2 className="h-6 w-6 text-accent"/> Audience Insights</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Understand demographics, interests, and purchase patterns related to your promotions.</p></CardContent>
-        </Card>
-        <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader><CardTitle className="flex items-center gap-2"><SlidersHorizontal className="h-6 w-6 text-accent"/> Funnel Optimization</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Identify drop-off points and optimize your promotional conversion funnels.</p></CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
-);
-
-const VersatileContentGenerationSection = () => (
-  <section id="content-generation" className="py-16 md:py-24 bg-background">
-     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
-      <div className="md:w-1/2">
-        <Image
-          src="https://picsum.photos/500/400?grayscale&random=content"
-          alt="AI Content Generation for Promotion"
-          width={500}
-          height={400}
-          data-ai-hint="writing tools"
-          className="rounded-xl shadow-xl"
-        />
-      </div>
-      <div className="md:w-1/2">
-        <FileText className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">AI Content for Every Promotional Need</h2>
-        <p className="text-lg text-muted-foreground mb-6">
-          Our AI content generator isn't just for product descriptions. Create blog posts, social media updates, email campaigns, ad copy for promotion, all tailored to your brand voice and target audience.
-        </p>
-        <div className="grid grid-cols-2 gap-4 text-muted-foreground">
-          <div className="flex items-center"><Type className="h-5 w-5 text-accent mr-2" /> Blog Articles</div>
-          <div className="flex items-center"><MessageSquare className="h-5 w-5 text-accent mr-2" /> Social Media Posts</div>
-          <div className="flex items-center"><Send className="h-5 w-5 text-accent mr-2" /> Email Copy</div>
-          <div className="flex items-center"><Edit3 className="h-5 w-5 text-accent mr-2" /> Ad Creatives</div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const ForAffiliateMarketersSection = () => (
-  <section id="for-affiliates" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10 text-center">
-      <Target className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Built for Promotional Success</h2>
-      <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-        PromoMarket provides specialized tools for digital marketers: link management, commission tracking, campaign optimization, and AI-driven discovery to find high-impact promotional opportunities.
-      </p>
-      <Image
-          src="https://picsum.photos/600/300?grayscale&random=affiliate"
-          alt="Digital Marketing Tools"
-          width={600}
-          height={300}
-          data-ai-hint="marketing strategy"
-          className="rounded-xl shadow-xl mx-auto"
-        />
-    </div>
-  </section>
-);
-
-const ForContentCreatorsSection = () => (
-  <section id="for-creators" className="py-16 md:py-24 bg-background">
-    <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row-reverse items-center gap-12">
-      <div className="md:w-1/2">
-        <Camera className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Fueling Content Promotion</h2>
-        <p className="text-lg text-muted-foreground mb-6">
-          Monetize your passion. PromoMarket helps content creators find relevant products/services to promote, generate engaging scripts or posts, and track earnings from their promotional endeavors.
-        </p>
-         <div className="flex space-x-4">
-            <Video className="h-8 w-8 text-accent"/>
-            <Mic className="h-8 w-8 text-accent"/>
-            <Lightbulb className="h-8 w-8 text-accent"/>
-         </div>
-      </div>
-      <div className="md:w-1/2">
-         <Image
-          src="https://picsum.photos/500/350?grayscale&random=creator"
-          alt="Content Creator Promotion Tools"
-          width={500}
-          height={350}
-          data-ai-hint="creative workspace"
-          className="rounded-xl shadow-xl"
-        />
-      </div>
-    </div>
-  </section>
-);
-
-const ForEntrepreneursSection = () => (
-  <section id="for-entrepreneurs" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10">
-       <div className="text-center mb-12">
-        <Briefcase className="h-12 w-12 text-primary mb-4 mx-auto" />
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Your Partner in Digital Growth</h2>
-        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-          For entrepreneurs scaling their online ventures, PromoMarket offers tools to diversify promotional channels, optimize marketing spend, and manage promotional activities efficiently.
-        </p>
-      </div>
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <Image
-            src="https://picsum.photos/500/300?grayscale&random=entrepreneur"
-            alt="Online Entrepreneurship Promotion"
-            width={500}
-            height={300}
-            data-ai-hint="business growth"
-            className="rounded-xl shadow-xl"
-          />
-        </div>
-        <ul className="space-y-4 text-lg">
-          <li className="flex items-start"><Rocket className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Scale your marketing efforts with AI automation.</span></li>
-          <li className="flex items-start"><DollarSign className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Maximize ROI with intelligent campaign management for promotions.</span></li>
-          <li className="flex items-start"><BarChartBig className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Access actionable data to drive strategic promotional decisions.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-);
-
-const SuccessStoriesSection = () => (
-  <section id="success-stories" className="py-16 md:py-24 bg-background">
-    <div className="container mx-auto px-6 md:px-10">
-      <div className="text-center mb-12">
-        <Award className="h-12 w-12 text-primary mb-4 mx-auto" />
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Real Results, Real Growth</h2>
-        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Discover how users like you have transformed their digital promotions with PromoMarket.
-        </p>
-      </div>
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card className="shadow-lg hover:shadow-xl transition-shadow">
-          <CardHeader>
-            <Image src="https://picsum.photos/80/80?grayscale&random=success1" alt="User 1" width={80} height={80} data-ai-hint="business person" className="rounded-full mb-2"/>
-            <CardTitle>Increased Promotional Conversions by 45%</CardTitle>
-            <CardDescription>"PromoMarket's AI recommendations helped me target the right promotional products to my audience." - Jane D.</CardDescription>
-          </CardHeader>
-          <CardContent>
-             <Image src="https://picsum.photos/400/200?grayscale&random=case1" alt="Case Study 1 Graph" width={400} height={200} data-ai-hint="graph increase" className="rounded-md"/>
-          </CardContent>
-        </Card>
-        <Card className="shadow-lg hover:shadow-xl transition-shadow">
-          <CardHeader>
-            <Image src="https://picsum.photos/80/80?grayscale&random=success2" alt="User 2" width={80} height={80} data-ai-hint="happy user" className="rounded-full mb-2"/>
-            <CardTitle>Saved 10+ Hours Weekly on Promo Content</CardTitle>
-            <CardDescription>"The AI content generator for promotions is a lifesaver! I can now focus on strategy." - Mark S.</CardDescription>
-          </CardHeader>
-           <CardContent>
-             <Image src="https://picsum.photos/400/200?grayscale&random=case2" alt="Case Study 2 Illustration" width={400} height={200} data-ai-hint="time saving" className="rounded-md"/>
-          </CardContent>
-        </Card>
-      </div>
-       <div className="text-center mt-12">
-        <Button variant="default" size="lg" asChild className="bg-primary hover:bg-primary/90">
-          <Link href="/case-studies">
-            Explore More Case Studies <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
-    </div>
-  </section>
-);
-
-const PartnersSection = () => (
-  <section id="partners" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10 text-center">
-      <Handshake className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Our Trusted Promotional Ecosystem</h2>
-      <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-        We collaborate with leading platforms and services to provide you with a seamless and powerful promotional experience.
-      </p>
-      <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-        {[...Array(5)].map((_, i) => (
-          <Image key={i} src={`https://picsum.photos/150/80?grayscale&random=partner${i+1}`} alt={`Partner Logo ${i+1}`} width={150} height={80} data-ai-hint="company logo" className="opacity-70 hover:opacity-100 transition-opacity"/>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const SecuritySection = () => (
-  <section id="security" className="py-16 md:py-24 bg-background">
-    <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
-      <div className="md:w-1/2">
-        <Server className="h-12 w-12 text-primary mb-4" /> 
-        <h2 className="text-3xl font-bold text-foreground mb-4">Security You Can Trust for Your Promotions</h2>
-        <p className="text-lg text-muted-foreground mb-6">
-          Your data security and platform reliability are our top priorities. We employ industry-standard security measures and robust infrastructure to keep your promotional information safe and PromoMarket running smoothly.
-        </p>
-        <ul className="space-y-2 text-muted-foreground">
-          <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> End-to-end data encryption</li>
-          <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> 99.9% uptime guarantee</li>
-          <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> Regular security audits</li>
-        </ul>
-      </div>
-      <div className="md:w-1/2">
-        <Image
-          src="https://picsum.photos/500/350?grayscale&random=security"
-          alt="Data Security for Promotions"
-          width={500}
-          height={350}
-          data-ai-hint="data security"
-          className="rounded-xl shadow-xl"
-        />
-      </div>
-    </div>
-  </section>
-);
-
-const CommunitySupportSection = () => (
-  <section id="community-support" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10 text-center">
-      <Users2 className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Vibrant Promo Community</h2>
-      <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-        Connect with fellow PromoMarket users, share strategies, and get support from our active community and dedicated helpdesk. We're here to help your promotions succeed.
-      </p>
-      <div className="grid md:grid-cols-3 gap-8">
-        <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader><CardTitle className="flex items-center gap-2"><MessageCircleIcon className="h-6 w-6 text-accent"/> Community Forum</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Ask questions, share promotion tips, and learn from others.</p></CardContent>
-        </Card>
-        <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader><CardTitle className="flex items-center gap-2"><LifeBuoy className="h-6 w-6 text-accent"/> Dedicated Support</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Our support team is ready to assist you with any PromoMarket queries.</p></CardContent>
-        </Card>
-         <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader><CardTitle className="flex items-center gap-2"><ListChecks className="h-6 w-6 text-accent"/> Knowledge Base</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Access tutorials, guides, and best practices for digital promotion.</p></CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
-);
-
-const VisionMissionSection = () => (
-  <section id="vision-mission" className="py-16 md:py-24 bg-background">
-    <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row-reverse items-center gap-12">
-       <div className="md:w-1/2">
-        <Eye className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Our Vision for the Future of Promotion</h2>
-        <p className="text-lg text-muted-foreground mb-3">
-          <strong>Mission:</strong> To empower individuals and businesses to achieve digital marketing success through innovative and accessible online promotion solutions.
-        </p>
-        <p className="text-lg text-muted-foreground mb-6">
-          <strong>Vision:</strong> To be the leading global platform that democratizes digital market promotion, fostering a world where anyone can build a thriving online presence.
-        </p>
-      </div>
-      <div className="md:w-1/2">
-         <Image
-          src="https://picsum.photos/500/350?grayscale&random=vision"
-          alt="Future Vision of Promotion"
-          width={500}
-          height={350}
-          data-ai-hint="future vision"
-          className="rounded-xl shadow-xl"
-        />
-      </div>
-    </div>
-  </section>
-);
-
-const PricingSection = () => (
-  <section id="pricing" className="py-16 md:py-24 bg-secondary">
-    <div className="container mx-auto px-6 md:px-10 text-center">
-      <Tag className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Simple, Transparent Pricing for PromoMarket</h2>
-      <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-        Get started with PromoMarket for free, and explore flexible plans that scale with your promotional success. No hidden fees, just pure value.
-      </p>
-      <div className="grid md:grid-cols-3 gap-8">
-        <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all duration-300">
-          <CardHeader className="bg-muted/50"><CardTitle>Free Tier</CardTitle><CardDescription>Perfect for getting started with promotions</CardDescription></CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-4xl font-bold mb-4">$0<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
-            <ul className="space-y-2 text-sm text-muted-foreground mb-6 text-left">
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Basic AI Promo Tools</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Limited Promo Tracking</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Community Access</li>
-            </ul>
-            <Button variant="outline" className="w-full" asChild><Link href="/client/home">Sign Up for PromoMarket Free</Link></Button>
-          </CardContent>
-        </Card>
-         <Card className="shadow-xl border-2 border-primary relative">
-           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded-full">Most Popular</div>
-          <CardHeader><CardTitle>Pro Plan</CardTitle><CardDescription>For serious digital marketers</CardDescription></CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-4xl font-bold mb-4">$29<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
-            <ul className="space-y-2 text-sm text-muted-foreground mb-6 text-left">
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Advanced AI Promo Suite</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Full Promotional Analytics</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Priority Support</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> More Integrations</li>
-            </ul>
-            <Button className="w-full bg-primary hover:bg-primary/90" asChild><Link href="/client/home">Choose Pro on PromoMarket</Link></Button>
-          </CardContent>
-        </Card>
-        <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all duration-300">
-          <CardHeader className="bg-muted/50"><CardTitle>Enterprise</CardTitle><CardDescription>For large teams & agencies promoting at scale</CardDescription></CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-4xl font-bold mb-4">Custom</p>
-             <ul className="space-y-2 text-sm text-muted-foreground mb-6 text-left">
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> All Pro Features</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Dedicated Account Manager</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Custom Promo Solutions</li>
-            </ul>
-            <Button variant="outline" className="w-full" asChild><Link href="/client/contact">Contact Sales</Link></Button>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
-);
 
 const FAQSection = () => {
   const faqs = [
     {
       question: "What is PromoMarket?",
-      answer: "PromoMarket is a comprehensive platform designed to help individuals and businesses master digital market promotion through AI-powered tools, analytics, and content generation."
+      answer: "PromoMarket is a comprehensive platform designed to help individuals and businesses manage and optimize their digital market promotions through AI-powered tools, analytics, brand and item management, campaign creation, and content monetization features."
     },
     {
-      question: "How does the AI product recommender work for promotions?",
-      answer: "Our AI analyzes user profiles, interests, and market trends to suggest relevant and high-converting products for you to promote effectively."
+      question: "How does the AI item recommender work for promotions?",
+      answer: "Our AI analyzes target audience profiles, interests, and market trends to suggest relevant and high-converting promotional items (products, services, campaigns) for you to promote effectively."
     },
     {
       question: "Is there a free trial or a free plan for PromoMarket?",
-      answer: "Yes, PromoMarket offers a free tier with basic features to get you started. We also have premium plans with more advanced promotional capabilities."
+      answer: "Yes, PromoMarket offers a free tier with basic features to get you started. We also have premium plans with more advanced promotional capabilities and higher usage limits."
     },
     {
-      question: "Can I integrate PromoMarket with my existing marketing tools?",
-      answer: "Absolutely! PromoMarket supports integration with various popular e-commerce platforms, social media channels, and marketing automation tools to streamline your promotions."
+      question: "Can I manage multiple brands and their promotional items?",
+      answer: "Absolutely! PromoMarket allows you to manage multiple brands, their specific categories, and a wide array of promotional items associated with them."
     },
     {
-      question: "How secure is my promotional data on PromoMarket?",
-      answer: "We take data security very seriously. PromoMarket employs industry-standard encryption and security protocols to protect your promotional information."
+      question: "How does campaign management work?",
+      answer: "You can create detailed promotional campaigns, associate them with specific items or brands, set start and end dates, define commission rates, and track their performance through clicks and conversions."
     }
   ];
 
@@ -687,7 +329,7 @@ const FAQSection = () => {
           <HelpCircle className="h-12 w-12 text-primary mb-4 mx-auto" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Frequently Asked Questions</h2>
           <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-            Got questions about PromoMarket? We've got answers. If you don't find what you're looking for, feel free to contact us.
+            Got questions about PromoMarket? We've got answers.
           </p>
         </div>
         <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
@@ -709,9 +351,9 @@ const FinalCTASection = () => (
   <section id="join-today" className="py-16 md:py-24 bg-gradient-to-r from-primary to-accent">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <UserPlus className="h-16 w-16 text-white mb-6 mx-auto" />
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Elevate Your Digital Promotions?</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Revolutionize Your Digital Promotions?</h2>
       <p className="text-xl text-primary-foreground mb-10 max-w-3xl mx-auto">
-        Join thousands of successful digital marketers, creators, and entrepreneurs who are already using PromoMarket to achieve their growth goals. Sign up today and unlock your full promotional potential.
+        Join PromoMarket today and unlock a suite of powerful tools designed to help you succeed in the competitive world of digital market promotion. Sign up and start maximizing your earnings.
       </p>
       <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-10 py-6">
         <Link href="/client/home">
@@ -733,10 +375,10 @@ export default function LandingPage() {
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/client/home" className="text-sm font-medium text-muted-foreground hover:text-primary">
-              <Home className="inline-block mr-1 h-4 w-4" /> Client Home
+              <Home className="inline-block mr-1 h-4 w-4" /> Client Area
             </Link>
-            <Link href="/client/products" className="text-sm font-medium text-muted-foreground hover:text-primary">
-              <ShoppingCart className="inline-block mr-1 h-4 w-4" /> Products
+            <Link href="/client/promotions" className="text-sm font-medium text-muted-foreground hover:text-primary">
+              <ShoppingCart className="inline-block mr-1 h-4 w-4" /> Promotions
             </Link>
              <Link href="/client/profile" className="text-sm font-medium text-muted-foreground hover:text-primary">
               <UserCircle2 className="inline-block mr-1 h-4 w-4" /> My Profile
@@ -756,20 +398,7 @@ export default function LandingPage() {
         <KeyFeaturesSection />
         <HowItWorksSection />
         <TestimonialsSection />
-        <AdvancedAICapabilitiesSection />
-        <MultiPlatformIntegrationSection />
-        <CustomizableDashboardsSection />
-        <DeepDiveAnalyticsSection />
-        <VersatileContentGenerationSection />
-        <ForAffiliateMarketersSection />
-        <ForContentCreatorsSection />
-        <ForEntrepreneursSection />
-        <SuccessStoriesSection />
-        <PartnersSection />
-        <SecuritySection />
-        <CommunitySupportSection />
-        <VisionMissionSection />
-        <PricingSection />
+        {additionalSectionsData.map(sec => <PlaceholderSection key={sec.imageUrlSeed} {...sec} />)}
         <FAQSection />
         <FinalCTASection />
       </main>
@@ -777,7 +406,7 @@ export default function LandingPage() {
       <footer className="py-8 px-6 md:px-10 border-t bg-card">
         <div className="container mx-auto text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} PromoMarket. All rights reserved.</p>
-          <p className="text-sm mt-1">Your gateway to digital market promotion.</p>
+          <p className="text-sm mt-1">Your partner in digital market promotion.</p>
         </div>
       </footer>
     </div>

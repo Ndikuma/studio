@@ -5,50 +5,71 @@ import Link from 'next/link';
 import { PageHeader } from '@/components/shared/page-header';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Lightbulb, TrendingUp, PenLine, LayoutDashboard, DollarSign, BarChart3, Users, Network, Link2, BookOpen } from 'lucide-react';
+import { ArrowRight, Lightbulb, TrendingUp, PenLine, LayoutDashboard, DollarSign, BarChart3, Users, Building, ShoppingCart, Megaphone, FileText, Link2, BookOpen } from 'lucide-react';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Bar, BarChart as RechartsBarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts"
 
 
 const overviewCards = [
   {
+    title: 'Manage Brands',
+    description: 'Oversee brands you work with or represent in your promotions.',
+    href: '/dashboard/brands',
+    icon: Building,
+    cta: 'View Brands',
+  },
+  {
+    title: 'Promotional Items',
+    description: 'Manage products, services, or digital items for promotion.',
+    href: '/dashboard/promotional-items',
+    icon: ShoppingCart,
+    cta: 'Manage Items',
+  },
+  {
+    title: 'Campaigns',
+    description: 'Create and track your marketing campaigns for specific promotions.',
+    href: '/dashboard/campaigns',
+    icon: Megaphone,
+    cta: 'View Campaigns',
+  },
+  {
+    title: 'Affiliate Links',
+    description: 'Generate and manage your unique affiliate links.',
+    href: '/dashboard/affiliate-links',
+    icon: Link2,
+    cta: 'Manage Links',
+  },
+   {
+    title: 'Content Management',
+    description: 'Organize and review promotional content like blogs and videos.',
+    href: '/dashboard/content-management',
+    icon: FileText,
+    cta: 'Manage Content',
+  },
+  {
     title: 'AI Promo Recommender',
-    description: 'Get AI suggestions for top products and affiliate programs to promote.',
+    description: 'Get AI suggestions for top promotional items and strategies.',
     href: '/dashboard/product-recommender',
     icon: Lightbulb,
-    cta: 'Find Products',
+    cta: 'Find Items',
   },
   {
     title: 'Performance Tracker',
-    description: 'Monitor your promotional clicks, conversions, and earnings in real-time.',
+    description: 'Monitor your clicks, conversions, and earnings in real-time.',
     href: '/dashboard/earnings-tracker',
     icon: TrendingUp,
     cta: 'View Performance',
   },
   {
     title: 'AI Content Generator',
-    description: 'Create engaging marketing content for your promotions with AI assistance.',
+    description: 'Create engaging marketing content for your promotions.',
     href: '/dashboard/marketing-content-generator',
     icon: PenLine,
     cta: 'Generate Content',
   },
-   {
-    title: 'Affiliate Programs',
-    description: 'Manage your joined affiliate programs and discover new ones for promotion.',
-    href: '/dashboard/affiliate-programs',
-    icon: Network,
-    cta: 'Manage Programs',
-  },
-  {
-    title: 'Link Management',
-    description: 'Create, shorten, and track your promotional affiliate links.',
-    href: '/dashboard/link-management',
-    icon: Link2,
-    cta: 'Manage Links',
-  },
   {
     title: 'Resource Library',
-    description: 'Access guides and tutorials to boost your digital promotion skills.',
+    description: 'Access guides and tutorials to boost your promotion skills.',
     href: '/dashboard/resources',
     icon: BookOpen,
     cta: 'Explore Resources',
@@ -56,19 +77,19 @@ const overviewCards = [
 ];
 
 const kpiData = [
-  { metric: "Total Promo Revenue", value: "$1,250", change: "+15%", icon: DollarSign, period: "this month" },
-  { metric: "Active Promo Campaigns", value: "12", change: "+2", icon: LayoutDashboard, period: "this month" },
-  { metric: "Overall Conversion Rate", value: "3.5%", change: "+0.5%", icon: BarChart3, period: "last 30 days" },
-  { metric: "New Promoters", value: "8", change: "+3", icon: Users, period: "this week" },
+  { metric: "Total Revenue", value: "$2,750", change: "+12%", icon: DollarSign, period: "this month" },
+  { metric: "Active Campaigns", value: "8", change: "+1", icon: Megaphone, period: "this month" },
+  { metric: "Total Clicks", value: "15,300", change: "+8%", icon: BarChart3, period: "last 30 days" },
+  { metric: "New Affiliates Joined", value: "5", change: "+2", icon: Users, period: "this week" },
 ];
 
 const chartData = [
-  { month: "Jan", earnings: 850 },
-  { month: "Feb", earnings: 1020 },
-  { month: "Mar", earnings: 780 },
-  { month: "Apr", earnings: 1150 },
-  { month: "May", earnings: 1340 },
-  { month: "Jun", earnings: 1500 },
+  { month: "Jan", earnings: 950 },
+  { month: "Feb", earnings: 1120 },
+  { month: "Mar", earnings: 880 },
+  { month: "Apr", earnings: 1250 },
+  { month: "May", earnings: 1440 },
+  { month: "Jun", earnings: 1600 },
 ];
 
 const chartConfig = {
@@ -109,7 +130,7 @@ export default function DashboardPage() {
         <Card className="shadow-lg md:col-span-2">
           <CardHeader>
             <CardTitle>Quick Actions for Your Promotions</CardTitle>
-            <CardDescription>Jump right into key promotional features.</CardDescription>
+            <CardDescription>Jump right into key features.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {overviewCards.map((card) => (
@@ -136,8 +157,8 @@ export default function DashboardPage() {
 
         <Card className="shadow-lg col-span-2 md:col-span-2"> 
           <CardHeader>
-            <CardTitle>Monthly Promotional Earnings Overview</CardTitle>
-            <CardDescription>Track your earnings progress from promotions over the past few months.</CardDescription>
+            <CardTitle>Monthly Earnings Overview</CardTitle>
+            <CardDescription>Track your earnings progress over the past few months.</CardDescription>
           </CardHeader>
           <CardContent className="h-[350px] pr-0">
             <ChartContainer config={chartConfig} className="w-full h-full">
@@ -160,3 +181,4 @@ export default function DashboardPage() {
     </>
   );
 }
+

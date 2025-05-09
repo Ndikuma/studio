@@ -12,8 +12,11 @@ import {
   UserCircle,
   Settings,
   LogOut,
-  Network,
-  Link2,
+  Building, // For Brands
+  ShoppingCart, // For Promotional Items
+  Megaphone, // For Campaigns
+  FileText, // For Content Management
+  Link2, // For Affiliate Links (was Link Management)
   BookOpen,
 } from 'lucide-react';
 import {
@@ -42,11 +45,14 @@ import React from 'react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard/brands', label: 'Brands', icon: Building },
+  { href: '/dashboard/promotional-items', label: 'Promotional Items', icon: ShoppingCart },
+  { href: '/dashboard/campaigns', label: 'Campaigns', icon: Megaphone },
+  { href: '/dashboard/affiliate-links', label: 'Affiliate Links', icon: Link2 },
+  { href: '/dashboard/content-management', label: 'Content Management', icon: FileText },
   { href: '/dashboard/product-recommender', label: 'AI Promo Recommender', icon: Lightbulb },
   { href: '/dashboard/earnings-tracker', label: 'Performance Tracker', icon: TrendingUp },
   { href: '/dashboard/marketing-content-generator', label: 'AI Content Generator', icon: PenLine },
-  { href: '/dashboard/affiliate-programs', label: 'Affiliate Programs', icon: Network },
-  { href: '/dashboard/link-management', label: 'Link Management', icon: Link2 },
   { href: '/dashboard/resources', label: 'Resource Library', icon: BookOpen },
 ];
 
@@ -67,7 +73,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <SidebarMenuItem key={item.href}>
               <Link href={item.href} legacyBehavior passHref>
                 <SidebarMenuButton
-                  isActive={pathname === item.href}
+                  isActive={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))}
                   tooltip={{ children: item.label, side: 'right', className: 'bg-card text-card-foreground border-border' }}
                   asChild
                 >
@@ -86,6 +92,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <SidebarMenuButton
               tooltip={{ children: "Settings", side: 'right', className: 'bg-card text-card-foreground border-border' }}
               asChild
+              isActive={pathname === '/dashboard/settings'}
             >
             <a>
                 <Settings />
@@ -126,7 +133,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                           <SidebarMenuItem key={item.href}>
                             <Link href={item.href} legacyBehavior passHref>
                               <Button
-                                variant={pathname === item.href ? "secondary" : "ghost"}
+                                variant={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href)) ? "secondary" : "ghost"}
                                 className="w-full justify-start gap-2"
                                 asChild
                               >
@@ -139,7 +146,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </SidebarContent>
                      <SidebarFooter className="p-4 mt-auto border-t">
                         <Link href="/dashboard/settings" legacyBehavior passHref>
-                           <Button variant="ghost" className="w-full justify-start gap-2">
+                           <Button variant={pathname === '/dashboard/settings' ? "secondary" : "ghost"} className="w-full justify-start gap-2">
                              <Settings className="h-5 w-5" /> Settings
                            </Button>
                         </Link>
@@ -162,14 +169,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Settings</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </DropdownMenuItem>
+                 <Link href="/dashboard/settings">
+                    <DropdownMenuItem>
+                        <Settings className="mr-2 h-4 w-4" />
+                        <span>Settings</span>
+                    </DropdownMenuItem>
+                 </Link>
+                 <Link href="/">
+                    <DropdownMenuItem>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Log out</span>
+                    </DropdownMenuItem>
+                  </Link>
               </DropdownMenuContent>
             </DropdownMenu>
           </header>
@@ -181,3 +192,4 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     </SidebarProvider>
   );
 }
+

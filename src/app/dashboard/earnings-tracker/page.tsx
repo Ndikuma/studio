@@ -4,44 +4,40 @@
 import { PageHeader } from '@/components/shared/page-header';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { TrendingUp, DollarSign, BarChart3, Activity, Users } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { TrendingUp, DollarSign, BarChart3, Activity, Users, FileText, Megaphone, LinkIcon } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { ChartConfig, ChartContainer, ChartTooltip as ShadcnChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const kpiData = [
-  { title: 'Total Promo Revenue', value: '$12,875', change: '+12.5%', icon: DollarSign, changeType: 'positive' as const },
-  { title: 'Total Promo Conversions', value: '862', change: '+8.2%', icon: Activity, changeType: 'positive' as const },
-  { title: 'Avg. Promo Click-Through Rate', value: '2.3%', change: '-0.5%', icon: BarChart3, changeType: 'negative' as const },
-  { title: 'Active Promoters/Affiliates', value: '128', change: '+5', icon: Users, changeType: 'positive' as const },
+  { title: 'Total Earnings', value: '$15,320', change: '+10.5%', icon: DollarSign, changeType: 'positive' as const },
+  { title: 'Affiliate Earnings', value: '$8,750', change: '+12.2%', icon: LinkIcon, changeType: 'positive' as const },
+  { title: 'Ad Revenue', value: '$4,500', change: '+5.1%', icon: FileText, changeType: 'positive' as const },
+  { title: 'Campaign Payments', value: '$2,070', change: '+15.0%', icon: Megaphone, changeType: 'positive' as const },
 ];
 
 const earningsChartData = [
-  { name: 'Jan', earnings: 2400, clicks: 10000 },
-  { name: 'Feb', earnings: 1398, clicks: 8000 },
-  { name: 'Mar', earnings: 9800, clicks: 12000 },
-  { name: 'Apr', earnings: 3908, clicks: 9500 },
-  { name: 'May', earnings: 4800, clicks: 11000 },
-  { name: 'Jun', earnings: 3800, clicks: 10500 },
-  { name: 'Jul', earnings: 4300, clicks: 13000 },
+  { name: 'Jan', affiliate: 1200, adRevenue: 600, campaign: 300, total: 2100 },
+  { name: 'Feb', affiliate: 1000, adRevenue: 500, campaign: 200, total: 1700 },
+  { name: 'Mar', affiliate: 2500, adRevenue: 1200, campaign: 500, total: 4200 },
+  { name: 'Apr', affiliate: 1800, adRevenue: 900, campaign: 400, total: 3100 },
+  { name: 'May', affiliate: 2200, adRevenue: 1100, campaign: 450, total: 3750 },
+  { name: 'Jun', affiliate: 1900, adRevenue: 950, campaign: 350, total: 3200 },
+  { name: 'Jul', affiliate: 2800, adRevenue: 1300, campaign: 600, total: 4700 },
 ];
 
 const chartConfig: ChartConfig = {
-  earnings: {
-    label: "Earnings ($)",
-    color: "hsl(var(--primary))",
-  },
-  clicks: {
-    label: "Clicks",
-    color: "hsl(var(--accent))",
-  },
+  total: { label: "Total ($)", color: "hsl(var(--primary))" },
+  affiliate: { label: "Affiliate ($)", color: "hsl(var(--chart-1))" },
+  adRevenue: { label: "Ad Revenue ($)", color: "hsl(var(--chart-2))" },
+  campaign: { label: "Campaign ($)", color: "hsl(var(--chart-3))" },
 };
 
 const transactionsData = [
-  { id: 'TRX001', date: '2024-07-15', campaign: 'Summer Sale Promotion', amount: '$250.00', status: 'Completed' },
-  { id: 'TRX002', date: '2024-07-14', campaign: 'New Product Launch Promo', amount: '$120.50', status: 'Completed' },
-  { id: 'TRX003', date: '2024-07-13', campaign: 'Influencer Collaboration', amount: '$85.75', status: 'Pending' },
-  { id: 'TRX004', date: '2024-07-12', campaign: 'Email Marketing Q3 Promo', amount: '$310.00', status: 'Completed' },
-  { id: 'TRX005', date: '2024-07-11', campaign: 'Social Media Boost', amount: '$55.20', status: 'Failed' },
+  { id: 'ERN001', date: '2024-07-15', source: 'AFFILIATE', amount: '$120.00', relatedItem: 'ProGamer Mouse X2000', status: 'Paid' },
+  { id: 'ERN002', date: '2024-07-14', source: 'AD_REVENUE', amount: '$55.20', relatedItem: 'My Review Blog Post', status: 'Credited' },
+  { id: 'ERN003', date: '2024-07-13', source: 'CAMPAIGN', amount: '$500.00', relatedItem: 'Summer Gaming Fest', status: 'Paid' },
+  { id: 'ERN004', date: '2024-07-12', source: 'AFFILIATE', amount: '$85.50', relatedItem: 'SmartHome Hub Pro', status: 'Pending Payout' },
+  { id: 'ERN005', date: '2024-07-11', source: 'AD_REVENUE', amount: '$30.10', relatedItem: 'Unboxing Video', status: 'Credited' },
 ];
 
 
@@ -49,8 +45,8 @@ export default function EarningsTrackerPage() {
   return (
     <>
       <PageHeader
-        title="Performance Tracker - PromoMarket"
-        description="Monitor your financial performance, track clicks, conversions, and earnings from your promotions."
+        title="Earnings Tracker - PromoMarket"
+        description="Monitor your financial performance from all promotional activities."
         icon={TrendingUp}
       />
 
@@ -72,48 +68,36 @@ export default function EarningsTrackerPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle>Monthly Promotion Performance</CardTitle>
-            <CardDescription>Earnings and Clicks trend from promotions over the last 7 months.</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[350px] pr-0">
-            <ChartContainer config={chartConfig} className="w-full h-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={earningsChartData} margin={{ top: 5, right: 10, left: -15, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={8} />
-                  <YAxis yAxisId="left" orientation="left" stroke="hsl(var(--primary))" tickLine={false} axisLine={false} tickMargin={8} />
-                  <YAxis yAxisId="right" orientation="right" stroke="hsl(var(--accent))" tickLine={false} axisLine={false} tickMargin={8} />
-                  <ShadcnChartTooltip 
-                    cursor={false}
-                    content={<ChartTooltipContent indicator="dot" />} 
-                  />
-                  <Legend />
-                  <Bar yAxisId="left" dataKey="earnings" fill="var(--color-earnings)" radius={[4, 4, 0, 0]} />
-                  <Bar yAxisId="right" dataKey="clicks" fill="var(--color-clicks)" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle>Promotion Conversion Funnel (Placeholder)</CardTitle>
-            <CardDescription>Visualize user journey from click to conversion for your promotions.</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[350px] flex items-center justify-center">
-            <p className="text-muted-foreground">Promotion Conversion Funnel Chart Coming Soon</p>
-          </CardContent>
-        </Card>
-      </div>
+      <Card className="shadow-lg mb-8">
+        <CardHeader>
+          <CardTitle>Monthly Earnings Breakdown</CardTitle>
+          <CardDescription>Earnings by source over the last 7 months.</CardDescription>
+        </CardHeader>
+        <CardContent className="h-[400px] pr-0">
+          <ChartContainer config={chartConfig} className="w-full h-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={earningsChartData} margin={{ top: 5, right: 10, left: -15, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={8} />
+                <YAxis tickFormatter={(value) => `$${value}`} tickLine={false} axisLine={false} tickMargin={8} />
+                <ShadcnChartTooltip 
+                  cursor={false}
+                  content={<ChartTooltipContent indicator="dot" />} 
+                />
+                <Legend />
+                <Bar dataKey="affiliate" stackId="a" fill="var(--color-affiliate)" radius={[0, 0, 0, 0]} />
+                <Bar dataKey="adRevenue" stackId="a" fill="var(--color-adRevenue)" radius={[0, 0, 0, 0]} />
+                <Bar dataKey="campaign" stackId="a" fill="var(--color-campaign)" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </ChartContainer>
+        </CardContent>
+      </Card>
       
-
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle>Recent Promotional Transactions</CardTitle>
-          <CardDescription>A log of your latest earnings and payouts from promotions.</CardDescription>
+          <CardTitle>Recent Earnings Log</CardTitle>
+          <CardDescription>A log of your latest earnings transactions.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -121,7 +105,8 @@ export default function EarningsTrackerPage() {
               <TableRow>
                 <TableHead>Transaction ID</TableHead>
                 <TableHead>Date</TableHead>
-                <TableHead>Campaign/Source</TableHead>
+                <TableHead>Source</TableHead>
+                <TableHead>Related Item/Campaign</TableHead>
                 <TableHead>Amount</TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
@@ -131,13 +116,14 @@ export default function EarningsTrackerPage() {
                 <TableRow key={transaction.id}>
                   <TableCell className="font-medium">{transaction.id}</TableCell>
                   <TableCell>{transaction.date}</TableCell>
-                  <TableCell>{transaction.campaign}</TableCell>
+                  <TableCell>{transaction.source.replace('_', ' ')}</TableCell>
+                  <TableCell>{transaction.relatedItem}</TableCell>
                   <TableCell>{transaction.amount}</TableCell>
                   <TableCell>
                     <span className={`px-2 py-1 text-xs rounded-full ${
-                      transaction.status === 'Completed' ? 'bg-green-100 text-green-700' :
-                      transaction.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-red-100 text-red-700'
+                      transaction.status === 'Paid' ? 'bg-green-100 text-green-700' :
+                      transaction.status === 'Credited' ? 'bg-blue-100 text-blue-700' :
+                      'bg-yellow-100 text-yellow-700' // Pending Payout
                     }`}>
                       {transaction.status}
                     </span>
@@ -151,3 +137,4 @@ export default function EarningsTrackerPage() {
     </>
   );
 }
+

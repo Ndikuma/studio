@@ -6,19 +6,19 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { PageHeader } from '@/components/shared/page-header';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Lightbulb, Loader2, AlertTriangle } from 'lucide-react';
+import { Lightbulb, Loader2, AlertTriangle, ShoppingCart, Info } from 'lucide-react';
 import { generateProductRecommendation, type ProductRecommendationInput, type ProductRecommendationOutput } from '@/ai/flows/product-recommendation';
 import { useToast } from '@/hooks/use-toast';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const formSchema = z.object({
-  userProfile: z.string().min(50, 'User profile description must be at least 50 characters long.'),
-  interests: z.string().min(10, 'User interests must be at least 10 characters long.'),
+  userProfile: z.string().min(50, 'Target audience profile must be at least 50 characters long.'),
+  interests: z.string().min(10, 'Target audience interests must be at least 10 characters long.'),
 });
 
 type RecommendationFormValues = z.infer<typeof formSchema>;
@@ -45,15 +45,15 @@ export default function ProductRecommenderPage() {
       const result = await generateProductRecommendation(data as ProductRecommendationInput);
       setRecommendations(result);
       toast({
-        title: "Promotional Recommendations Generated!",
-        description: "AI has successfully suggested products/services for your promotion.",
+        title: "Promotional Item Recommendations Generated!",
+        description: "AI has successfully suggested items for your promotion.",
       });
     } catch (err) {
       console.error(err);
       const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred.";
       setError(errorMessage);
       toast({
-        title: "Error Generating Promotional Recommendations",
+        title: "Error Generating Recommendations",
         description: errorMessage,
         variant: "destructive",
       });
@@ -65,8 +65,8 @@ export default function ProductRecommenderPage() {
   return (
     <>
       <PageHeader
-        title="AI Promotion Recommender - PromoMarket"
-        description="Let AI suggest the best products, services, and affiliate programs for your promotional campaigns based on user profiles and interests."
+        title="AI Promotional Item Recommender"
+        description="Let AI suggest the best promotional items (products, services, campaigns) based on target audience profiles and interests."
         icon={Lightbulb}
       />
 
@@ -74,7 +74,7 @@ export default function ProductRecommenderPage() {
         <Card className="md:col-span-1 shadow-lg">
           <CardHeader>
             <CardTitle>Provide Target Audience Details</CardTitle>
-            <CardDescription>Enter the target audience's profile and interests to get tailored promotional recommendations.</CardDescription>
+            <CardDescription>Enter the audience's profile and interests to get tailored promotional item recommendations.</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -130,14 +130,14 @@ export default function ProductRecommenderPage() {
           {isLoading && (
             <Card className="shadow-lg flex flex-col items-center justify-center h-full min-h-[300px]">
               <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
-              <p className="text-lg text-muted-foreground">Generating promotional recommendations...</p>
+              <p className="text-lg text-muted-foreground">Generating recommendations...</p>
             </Card>
           )}
           {error && !isLoading && (
              <Card className="shadow-lg border-destructive">
               <CardHeader className="flex-row items-center gap-2">
                 <AlertTriangle className="h-6 w-6 text-destructive" />
-                <CardTitle className="text-destructive">Failed to Generate Promotional Recommendations</CardTitle>
+                <CardTitle className="text-destructive">Failed to Generate Recommendations</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-destructive-foreground">{error}</p>
@@ -151,30 +151,42 @@ export default function ProductRecommenderPage() {
             <div className="space-y-6">
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>AI Recommended Products/Services for Promotion</CardTitle>
-                  <CardDescription>Here are the items AI suggests for promotion based on the provided details.</CardDescription>
+                  <CardTitle>AI Recommended Promotional Items</CardTitle>
+                  <CardDescription>Here are the items AI suggests for promotion.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {recommendations.productRecommendations && recommendations.productRecommendations.length > 0 ? (
-                    <ScrollArea className="h-[200px] w-full pr-4">
-                      <ul className="space-y-2 list-disc list-inside">
-                        {recommendations.productRecommendations.map((product, index) => (
-                          <li key={index} className="text-foreground">{product}</li>
+                  {recommendations.recommendations && recommendations.recommendations.length > 0 ? (
+                    <ScrollArea className="h-auto max-h-[400px] w-full pr-4">
+                      <div className="space-y-4">
+                        {recommendations.recommendations.map((item, index) => (
+                          <Card key={index} className="bg-muted/30 p-4">
+                            <CardTitle className="text-lg flex items-center gap-2">
+                              <ShoppingCart className="h-5 w-5 text-primary" />
+                              {item.name}
+                            </CardTitle>
+                            <CardDescription className="mt-1 text-xs">
+                              <span className="font-semibold text-foreground">{item.brandName}</span> - {item.itemType}
+                            </CardDescription>
+                            <p className="text-sm text-muted-foreground mt-2">{item.description}</p>
+                            <p className="text-sm font-semibold text-accent mt-2">
+                              Potential Commission: {item.commissionRate?.toFixed(1)}%
+                            </p>
+                          </Card>
                         ))}
-                      </ul>
+                      </div>
                     </ScrollArea>
                   ) : (
-                    <p className="text-muted-foreground">No specific promotional recommendations generated. Try refining your input.</p>
+                    <p className="text-muted-foreground">No specific recommendations generated. Try refining your input.</p>
                   )}
                 </CardContent>
               </Card>
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>Reasoning for Promotion</CardTitle>
-                  <CardDescription>The rationale behind AI's promotional suggestions.</CardDescription>
+                  <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5 text-primary"/>Reasoning</CardTitle>
+                  <CardDescription>The rationale behind AI's suggestions.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                   <ScrollArea className="h-[150px] w-full pr-4">
+                   <ScrollArea className="h-auto max-h-[150px] w-full pr-4">
                     <p className="text-muted-foreground whitespace-pre-wrap">{recommendations.reasoning}</p>
                   </ScrollArea>
                 </CardContent>
@@ -184,8 +196,8 @@ export default function ProductRecommenderPage() {
           {!isLoading && !error && !recommendations && (
              <Card className="shadow-lg flex flex-col items-center justify-center h-full min-h-[300px] bg-secondary/50">
               <Lightbulb className="h-12 w-12 text-muted-foreground mb-4" />
-              <p className="text-lg text-muted-foreground">Your promotional recommendations will appear here.</p>
-              <p className="text-sm text-muted-foreground text-center mt-1">Fill out the form and click "Get Promotional Recommendations".</p>
+              <p className="text-lg text-muted-foreground">Your promotional item recommendations will appear here.</p>
+              <p className="text-sm text-muted-foreground text-center mt-1">Fill out the form and click "Get Recommendations".</p>
             </Card>
           )}
         </div>

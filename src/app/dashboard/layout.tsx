@@ -11,6 +11,9 @@ import {
   UserCircle,
   Settings,
   LogOut,
+  Network,
+  Link2,
+  BookOpen,
 } from 'lucide-react';
 import {
   SidebarProvider,
@@ -22,7 +25,7 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarTrigger,
-} from '@/components/ui/sidebar'; // Assuming sidebar is extended or used from shadcn/ui
+} from '@/components/ui/sidebar'; 
 import { EarnHubLogo, EarnHubLogoIcon } from '@/components/icons/earnhub-logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -41,6 +44,9 @@ const navItems = [
   { href: '/dashboard/product-recommender', label: 'AI Product Recommender', icon: Lightbulb },
   { href: '/dashboard/earnings-tracker', label: 'Earnings Tracker', icon: TrendingUp },
   { href: '/dashboard/marketing-content-generator', label: 'AI Content Generator', icon: PenLine },
+  { href: '/dashboard/affiliate-programs', label: 'Affiliate Programs', icon: Network },
+  { href: '/dashboard/link-management', label: 'Link Management', icon: Link2 },
+  { href: '/dashboard/resources', label: 'Resource Library', icon: BookOpen },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {

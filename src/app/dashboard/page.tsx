@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { PageHeader } from '@/components/shared/page-header';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Lightbulb, TrendingUp, PenLine, LayoutDashboard, DollarSign, BarChart3, Users } from 'lucide-react';
+import { ArrowRight, Lightbulb, TrendingUp, PenLine, LayoutDashboard, DollarSign, BarChart3, Users, Network, Link2, BookOpen } from 'lucide-react';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts"
+import { Bar, BarChart as RechartsBarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts"
 
 
 const overviewCards = [
@@ -30,6 +30,27 @@ const overviewCards = [
     href: '/dashboard/marketing-content-generator',
     icon: PenLine,
     cta: 'Generate Content',
+  },
+   {
+    title: 'Affiliate Programs',
+    description: 'Manage your joined affiliate programs and discover new ones.',
+    href: '/dashboard/affiliate-programs',
+    icon: Network,
+    cta: 'Manage Programs',
+  },
+  {
+    title: 'Link Management',
+    description: 'Create, shorten, and track your affiliate links.',
+    href: '/dashboard/link-management',
+    icon: Link2,
+    cta: 'Manage Links',
+  },
+  {
+    title: 'Resource Library',
+    description: 'Access guides and tutorials to boost your skills.',
+    href: '/dashboard/resources',
+    icon: BookOpen,
+    cta: 'Explore Resources',
   },
 ];
 
@@ -84,24 +105,27 @@ export default function DashboardPage() {
       </div>
       
       <div className="grid gap-6 md:grid-cols-2 mb-8">
-        <Card className="shadow-lg col-span-2 md:col-span-1">
+        <Card className="shadow-lg md:col-span-2">
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
             <CardDescription>Jump right into key features.</CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-4">
+          <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {overviewCards.map((card) => (
               <Link href={card.href} key={card.title} className="block group">
-                <Card className="hover:border-primary transition-colors duration-200 p-4 shadow-sm hover:shadow-md">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <card.icon className="h-8 w-8 text-primary" />
+                <Card className="hover:border-primary transition-colors duration-200 p-4 shadow-sm hover:shadow-md h-full">
+                  <div className="flex flex-col justify-between h-full">
+                    <div className="flex items-start gap-3">
+                      <card.icon className="h-8 w-8 text-primary mt-1" />
                       <div>
                         <h3 className="text-lg font-semibold text-foreground group-hover:text-primary">{card.title}</h3>
-                        <p className="text-sm text-muted-foreground">{card.description}</p>
+                        <p className="text-sm text-muted-foreground mt-1">{card.description}</p>
                       </div>
                     </div>
-                    <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <div className="mt-4 flex items-center text-sm text-primary font-medium">
+                      {card.cta}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </Card>
               </Link>
@@ -109,15 +133,15 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg col-span-2 md:col-span-1">
+        <Card className="shadow-lg col-span-2 md:col-span-2"> {/* Make chart full width on md */}
           <CardHeader>
             <CardTitle>Monthly Earnings Overview</CardTitle>
             <CardDescription>Track your earnings progress over the past few months.</CardDescription>
           </CardHeader>
-          <CardContent className="h-[300px] pr-0">
+          <CardContent className="h-[350px] pr-0">
             <ChartContainer config={chartConfig} className="w-full h-full">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
+                <RechartsBarChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
                   <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `$${value}`} />
@@ -126,7 +150,7 @@ export default function DashboardPage() {
                     content={<ChartTooltipContent hideLabel />}
                   />
                   <Bar dataKey="earnings" fill="var(--color-earnings)" radius={[4, 4, 0, 0]} />
-                </BarChart>
+                </RechartsBarChart>
               </ResponsiveContainer>
             </ChartContainer>
           </CardContent>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
@@ -19,8 +20,8 @@ export default function AffiliateProgramsPage() {
   return (
     <>
       <PageHeader
-        title="Affiliate Programs"
-        description="Manage your affiliate program memberships and track their performance."
+        title="Affiliate Programs - PromoMarket"
+        description="Manage your affiliate program memberships and track their promotional performance."
         icon={Network}
         action={
           <Button>
@@ -33,7 +34,7 @@ export default function AffiliateProgramsPage() {
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle>Your Affiliate Programs</CardTitle>
-          <CardDescription>A list of affiliate programs you have joined or are tracking.</CardDescription>
+          <CardDescription>A list of affiliate programs you have joined or are tracking for your promotions.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>

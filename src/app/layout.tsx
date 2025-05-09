@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'EarnHub - Your Digital Marketplace',
-  description: 'Earn money online by promoting and selling products, leveraging internet-based opportunities.',
+  title: 'PromoMarket - Your Digital Promotion Hub',
+  description: 'PromoMarket: Master digital market promotion with AI tools, analytics, and content generation. Boost your online presence and earnings.',
 };
 
 export default function RootLayout({

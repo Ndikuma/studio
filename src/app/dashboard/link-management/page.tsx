@@ -1,3 +1,4 @@
+
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
@@ -8,42 +9,40 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Link2, PlusCircle, MoreHorizontal, Edit, Trash2, BarChart2, Copy } from 'lucide-react';
 
 const mockLinks = [
-  { id: 'link001', originalUrl: 'https://example.com/product-a?ref=user123', shortLink: 'https://ern.hb/prodA', clicks: 1250, campaign: 'Summer Sale', createdDate: '2024-06-01', program: 'Amazon Associates' },
-  { id: 'link002', originalUrl: 'https://another-store.com/item-b-long-url-here', shortLink: 'https://ern.hb/itemB', clicks: 870, campaign: 'New Launch', createdDate: '2024-06-15', program: 'ShareASale' },
-  { id: 'link003', originalUrl: 'https://service-provider.net/signup?aff_id=xyz', shortLink: 'https://ern.hb/servX', clicks: 340, campaign: 'Q3 Promotion', createdDate: '2024-07-01', program: 'CJ Affiliate' },
-  { id: 'link004', originalUrl: 'https://marketplace.com/unique-offer-page', shortLink: 'https://ern.hb/offerU', clicks: 0, campaign: 'Holiday Special', createdDate: '2024-07-20', program: 'ClickBank' },
+  { id: 'link001', originalUrl: 'https://example.com/product-a?ref=user123', shortLink: 'https://promo.st/prodA', clicks: 1250, campaign: 'Summer Sale Promotion', createdDate: '2024-06-01', program: 'Amazon Associates' },
+  { id: 'link002', originalUrl: 'https://another-store.com/item-b-long-url-here', shortLink: 'https://promo.st/itemB', clicks: 870, campaign: 'New Launch Promotion', createdDate: '2024-06-15', program: 'ShareASale' },
+  { id: 'link003', originalUrl: 'https://service-provider.net/signup?aff_id=xyz', shortLink: 'https://promo.st/servX', clicks: 340, campaign: 'Q3 Promotion', createdDate: '2024-07-01', program: 'CJ Affiliate' },
+  { id: 'link004', originalUrl: 'https://marketplace.com/unique-offer-page', shortLink: 'https://promo.st/offerU', clicks: 0, campaign: 'Holiday Special Promotion', createdDate: '2024-07-20', program: 'ClickBank' },
 ];
 
 export default function LinkManagementPage() {
-  // A simple copy to clipboard function. In a real app, consider a library or more robust error handling.
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
-      // Consider adding a toast notification here for user feedback
-      alert('Link copied to clipboard!');
+      alert('Promotional link copied to clipboard!');
     }).catch(err => {
       console.error('Failed to copy: ', err);
-      alert('Failed to copy link.');
+      alert('Failed to copy promotional link.');
     });
   };
 
   return (
     <>
       <PageHeader
-        title="Link Management"
-        description="Create, manage, and track your affiliate links efficiently."
+        title="Link Management - PromoMarket"
+        description="Create, manage, and track your promotional links efficiently."
         icon={Link2}
         action={
           <Button>
             <PlusCircle className="mr-2 h-4 w-4" />
-            Create New Link
+            Create New Promo Link
           </Button>
         }
       />
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle>Your Affiliate Links</CardTitle>
-          <CardDescription>A list of all your generated affiliate links.</CardDescription>
+          <CardTitle>Your Promotional Links</CardTitle>
+          <CardDescription>A list of all your generated promotional affiliate links.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -105,9 +104,9 @@ export default function LinkManagementPage() {
           </Table>
            {mockLinks.length === 0 && (
             <div className="text-center py-10 text-muted-foreground">
-              <p>No links created yet.</p>
+              <p>No promotional links created yet.</p>
               <Button variant="link" className="mt-2">
-                <PlusCircle className="mr-2 h-4 w-4" /> Create your first link
+                <PlusCircle className="mr-2 h-4 w-4" /> Create your first promo link
               </Button>
             </div>
           )}

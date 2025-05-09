@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -11,43 +12,43 @@ import { Bar, BarChart as RechartsBarChart, CartesianGrid, XAxis, YAxis, Respons
 
 const overviewCards = [
   {
-    title: 'AI Product Recommender',
-    description: 'Get AI suggestions for top products and affiliate programs.',
+    title: 'AI Promo Recommender',
+    description: 'Get AI suggestions for top products and affiliate programs to promote.',
     href: '/dashboard/product-recommender',
     icon: Lightbulb,
     cta: 'Find Products',
   },
   {
-    title: 'Earnings Tracker',
-    description: 'Monitor your clicks, conversions, and earnings in real-time.',
+    title: 'Performance Tracker',
+    description: 'Monitor your promotional clicks, conversions, and earnings in real-time.',
     href: '/dashboard/earnings-tracker',
     icon: TrendingUp,
-    cta: 'View Earnings',
+    cta: 'View Performance',
   },
   {
     title: 'AI Content Generator',
-    description: 'Create engaging marketing content with AI assistance.',
+    description: 'Create engaging marketing content for your promotions with AI assistance.',
     href: '/dashboard/marketing-content-generator',
     icon: PenLine,
     cta: 'Generate Content',
   },
    {
     title: 'Affiliate Programs',
-    description: 'Manage your joined affiliate programs and discover new ones.',
+    description: 'Manage your joined affiliate programs and discover new ones for promotion.',
     href: '/dashboard/affiliate-programs',
     icon: Network,
     cta: 'Manage Programs',
   },
   {
     title: 'Link Management',
-    description: 'Create, shorten, and track your affiliate links.',
+    description: 'Create, shorten, and track your promotional affiliate links.',
     href: '/dashboard/link-management',
     icon: Link2,
     cta: 'Manage Links',
   },
   {
     title: 'Resource Library',
-    description: 'Access guides and tutorials to boost your skills.',
+    description: 'Access guides and tutorials to boost your digital promotion skills.',
     href: '/dashboard/resources',
     icon: BookOpen,
     cta: 'Explore Resources',
@@ -55,10 +56,10 @@ const overviewCards = [
 ];
 
 const kpiData = [
-  { metric: "Total Revenue", value: "$1,250", change: "+15%", icon: DollarSign, period: "this month" },
-  { metric: "Active Campaigns", value: "12", change: "+2", icon: LayoutDashboard, period: "this month" },
-  { metric: "Conversion Rate", value: "3.5%", change: "+0.5%", icon: BarChart3, period: "last 30 days" },
-  { metric: "New Affiliates", value: "8", change: "+3", icon: Users, period: "this week" },
+  { metric: "Total Promo Revenue", value: "$1,250", change: "+15%", icon: DollarSign, period: "this month" },
+  { metric: "Active Promo Campaigns", value: "12", change: "+2", icon: LayoutDashboard, period: "this month" },
+  { metric: "Overall Conversion Rate", value: "3.5%", change: "+0.5%", icon: BarChart3, period: "last 30 days" },
+  { metric: "New Promoters", value: "8", change: "+3", icon: Users, period: "this week" },
 ];
 
 const chartData = [
@@ -81,8 +82,8 @@ export default function DashboardPage() {
   return (
     <>
       <PageHeader
-        title="Welcome to EarnHub!"
-        description="Your central hub for managing and growing your online earnings."
+        title="Welcome to PromoMarket!"
+        description="Your central hub for managing and growing your digital promotions."
         icon={LayoutDashboard}
       />
 
@@ -107,8 +108,8 @@ export default function DashboardPage() {
       <div className="grid gap-6 md:grid-cols-2 mb-8">
         <Card className="shadow-lg md:col-span-2">
           <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Jump right into key features.</CardDescription>
+            <CardTitle>Quick Actions for Your Promotions</CardTitle>
+            <CardDescription>Jump right into key promotional features.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {overviewCards.map((card) => (
@@ -133,10 +134,10 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg col-span-2 md:col-span-2"> {/* Make chart full width on md */}
+        <Card className="shadow-lg col-span-2 md:col-span-2"> 
           <CardHeader>
-            <CardTitle>Monthly Earnings Overview</CardTitle>
-            <CardDescription>Track your earnings progress over the past few months.</CardDescription>
+            <CardTitle>Monthly Promotional Earnings Overview</CardTitle>
+            <CardDescription>Track your earnings progress from promotions over the past few months.</CardDescription>
           </CardHeader>
           <CardContent className="h-[350px] pr-0">
             <ChartContainer config={chartConfig} className="w-full h-full">

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -26,7 +27,7 @@ import {
   SidebarFooter,
   SidebarTrigger,
 } from '@/components/ui/sidebar'; 
-import { EarnHubLogo, EarnHubLogoIcon } from '@/components/icons/earnhub-logo';
+import { PromoMarketLogo, PromoMarketLogoIcon } from '@/components/icons/promomarket-logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
@@ -41,8 +42,8 @@ import React from 'react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/dashboard/product-recommender', label: 'AI Product Recommender', icon: Lightbulb },
-  { href: '/dashboard/earnings-tracker', label: 'Earnings Tracker', icon: TrendingUp },
+  { href: '/dashboard/product-recommender', label: 'AI Promo Recommender', icon: Lightbulb },
+  { href: '/dashboard/earnings-tracker', label: 'Performance Tracker', icon: TrendingUp },
   { href: '/dashboard/marketing-content-generator', label: 'AI Content Generator', icon: PenLine },
   { href: '/dashboard/affiliate-programs', label: 'Affiliate Programs', icon: Network },
   { href: '/dashboard/link-management', label: 'Link Management', icon: Link2 },
@@ -55,9 +56,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const sidebarContent = (
     <>
       <SidebarHeader className="p-4">
-        <EarnHubLogo />
+        <PromoMarketLogo />
         <div className="hidden group-data-[collapsible=icon]:block">
-          <EarnHubLogoIcon />
+          <PromoMarketLogoIcon />
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -116,7 +117,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <SheetContent side="left" className="flex flex-col p-0 w-72">
                    <SidebarHeader className="p-4 border-b">
                       <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-                        <EarnHubLogo />
+                        <PromoMarketLogo />
                       </Link>
                     </SidebarHeader>
                     <SidebarContent className="overflow-y-auto">

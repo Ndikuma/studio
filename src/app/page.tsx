@@ -1,5 +1,4 @@
 
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -29,7 +28,7 @@ import {
   CheckSquare,
   Handshake,
   Server,
-  MessageCircle as MessageCircleIcon, // Renamed to avoid conflict with component
+  MessageCircle as MessageCircleIcon, 
   LifeBuoy,
   Users2,
   Eye,
@@ -47,26 +46,26 @@ import {
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { EarnHubLogo } from '@/components/icons/earnhub-logo';
+import { PromoMarketLogo } from '@/components/icons/promomarket-logo';
 
 
 const featureCards = [
   {
     icon: Zap,
-    title: 'AI-Powered Tools',
-    description: 'Leverage cutting-edge AI for product recommendations and content generation to boost your marketing efforts.',
+    title: 'AI-Powered Promo Tools',
+    description: 'Leverage cutting-edge AI for product recommendations and content generation to boost your digital marketing efforts.',
     dataAiHint: 'artificial intelligence technology'
   },
   {
     icon: BarChartBig,
-    title: 'Comprehensive Tracking',
-    description: 'Monitor your earnings, clicks, and conversions with our detailed analytics and reporting features.',
+    title: 'Comprehensive Promo Tracking',
+    description: 'Monitor your promotion earnings, clicks, and conversions with our detailed analytics and reporting features.',
     dataAiHint: 'data analytics chart'
   },
   {
     icon: MessageSquare,
     title: 'Seamless Integration',
-    description: 'Easily connect with affiliate programs and manage your campaigns all in one centralized platform.',
+    description: 'Easily connect with affiliate programs and manage your promotional campaigns all in one centralized platform.',
     dataAiHint: 'connected network integration'
   },
 ];
@@ -75,21 +74,21 @@ const howItWorksSteps = [
   {
     step: 1,
     title: 'Sign Up & Setup',
-    description: 'Create your EarnHub account in minutes and configure your profile to get started.',
+    description: 'Create your PromoMarket account in minutes and configure your profile to get started on your promotional journey.',
     image: 'https://picsum.photos/300/200?grayscale&random=1',
     dataAiHint: 'user registration interface'
   },
   {
     step: 2,
     title: 'Explore & Generate',
-    description: 'Utilize AI tools to find product opportunities and generate engaging marketing content effortlessly.',
+    description: 'Utilize AI tools to find promotional opportunities and generate engaging marketing content effortlessly.',
     image: 'https://picsum.photos/300/200?grayscale&random=2',
     dataAiHint: 'creative process tools'
   },
   {
     step: 3,
     title: 'Track & Optimize',
-    description: 'Monitor your performance with real-time analytics and optimize your strategies for maximum earnings.',
+    description: 'Monitor your promotional performance with real-time analytics and optimize your strategies for maximum impact.',
     image: 'https://picsum.photos/300/200?grayscale&random=3',
     dataAiHint: 'dashboard analytics progress'
   },
@@ -98,36 +97,35 @@ const howItWorksSteps = [
 const testimonialCards = [
   {
     name: 'Alex P.',
-    role: 'Affiliate Marketer',
-    quote: "EarnHub's AI tools have revolutionized how I approach content creation. My conversion rates are up by 30%!",
+    role: 'Digital Marketer',
+    quote: "PromoMarket's AI tools have revolutionized how I approach content creation for promotions. My conversion rates are up by 30%!",
     avatar: 'https://picsum.photos/100/100?grayscale&random=4',
     dataAiHint: 'professional portrait man'
   },
   {
     name: 'Sarah K.',
-    role: 'Content Creator',
-    quote: "The earnings tracker is incredibly detailed and helps me understand exactly what's working. Highly recommended!",
+    role: 'Content Strategist',
+    quote: "The earnings tracker is incredibly detailed and helps me understand exactly which promotions are working. Highly recommended!",
     avatar: 'https://picsum.photos/100/100?grayscale&random=5',
     dataAiHint: 'professional portrait woman'
   },
   {
     name: 'Mike L.',
     role: 'Online Entrepreneur',
-    quote: "Managing multiple affiliate links was a headache. EarnHub streamlined everything. A game changer!",
+    quote: "Managing multiple promotional links was a headache. PromoMarket streamlined everything. A game changer for my digital marketing!",
     avatar: 'https://picsum.photos/100/100?grayscale&random=6',
     dataAiHint: 'smiling person outdoor'
   },
 ];
 
-// Section 1: Hero (Existing)
 const HeroSection = () => (
   <section className="container mx-auto px-6 md:px-10 py-12 md:py-24 flex flex-col md:flex-row items-center">
     <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
       <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-        Unlock Your Earning Potential Online
+        Unlock Your Digital Marketing Potential
       </h2>
       <p className="text-lg text-muted-foreground mb-8">
-        EarnHub is your dynamic digital marketplace to monetize skills, promote products, and leverage internet-based opportunities. Start your journey to financial freedom today.
+        PromoMarket is your dynamic platform to master digital market promotion. Drive growth, engage audiences, and maximize your online impact.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
         <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -145,10 +143,10 @@ const HeroSection = () => (
     <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
       <Image
         src="https://picsum.photos/600/400?grayscale&blur=1&random=hero"
-        alt="Digital Marketplace"
+        alt="Digital Marketing Promotion"
         width={600}
         height={400}
-        data-ai-hint="digital marketplace business"
+        data-ai-hint="digital marketing business"
         className="rounded-xl shadow-2xl"
         priority
       />
@@ -156,13 +154,12 @@ const HeroSection = () => (
   </section>
 );
 
-// Section 2: Key Features (Existing)
 const KeyFeaturesSection = () => (
   <section className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why Choose EarnHub?</h2>
-        <p className="text-lg text-muted-foreground mt-2">Powerful features designed for your success.</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why Choose PromoMarket?</h2>
+        <p className="text-lg text-muted-foreground mt-2">Powerful features designed for your promotional success.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         {featureCards.map((feature, index) => (
@@ -181,13 +178,12 @@ const KeyFeaturesSection = () => (
   </section>
 );
 
-// Section 3: How It Works (Existing)
 const HowItWorksSection = () => (
   <section className="py-16 md:py-24">
     <div className="container mx-auto px-6 md:px-10">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Get Started in 3 Easy Steps</h2>
-        <p className="text-lg text-muted-foreground mt-2">Launch your earning journey quickly and efficiently.</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Get Started with PromoMarket in 3 Easy Steps</h2>
+        <p className="text-lg text-muted-foreground mt-2">Launch your promotional journey quickly and efficiently.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-start">
         {howItWorksSteps.map((step) => (
@@ -214,13 +210,12 @@ const HowItWorksSection = () => (
   </section>
 );
 
-// Section 4: Testimonials (Existing)
 const TestimonialsSection = () => (
   <section className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Loved by Marketers & Creators</h2>
-        <p className="text-lg text-muted-foreground mt-2">See what our users are saying about EarnHub.</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Loved by Digital Marketers & Creators</h2>
+        <p className="text-lg text-muted-foreground mt-2">See what our users are saying about PromoMarket.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         {testimonialCards.map((testimonial, index) => (
@@ -245,7 +240,7 @@ const TestimonialsSection = () => (
       </div>
       <div className="text-center mt-12">
         <Button variant="outline" size="lg" asChild>
-          <Link href="/#testimonials-more"> {/* Updated href for potential future expansion */}
+          <Link href="/#testimonials-more">
             Read More Testimonials <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
@@ -254,15 +249,14 @@ const TestimonialsSection = () => (
   </section>
 );
 
-// Section 5: Advanced AI Capabilities
 const AdvancedAICapabilitiesSection = () => (
   <section id="advanced-ai" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
       <div className="md:w-1/2">
         <Brain className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Unlock Advanced AI Capabilities</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4">Unlock Advanced AI for Promotion</h2>
         <p className="text-lg text-muted-foreground mb-6">
-          Go beyond basic tools with EarnHub’s sophisticated AI. Predict market trends, segment audiences with precision, and receive data-driven insights to optimize your strategies for peak performance.
+          Go beyond basic tools with PromoMarket’s sophisticated AI. Predict market trends, segment audiences with precision, and receive data-driven insights to optimize your promotional strategies for peak performance.
         </p>
         <ul className="space-y-2 text-muted-foreground">
           <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-2" /> AI-driven trend prediction</li>
@@ -273,7 +267,7 @@ const AdvancedAICapabilitiesSection = () => (
       <div className="md:w-1/2">
         <Image
           src="https://picsum.photos/500/350?grayscale&random=ai"
-          alt="Advanced AI"
+          alt="Advanced AI for Promotion"
           width={500}
           height={350}
           data-ai-hint="AI brain network"
@@ -284,14 +278,13 @@ const AdvancedAICapabilitiesSection = () => (
   </section>
 );
 
-// Section 6: Multi-Platform Integration
 const MultiPlatformIntegrationSection = () => (
   <section id="multi-platform" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <Share2 className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Seamless Multi-Platform Integration</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-4">Seamless Multi-Platform Promotion</h2>
       <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-        Connect EarnHub with your favorite e-commerce platforms, social media channels, and marketing tools. Manage all your affiliate activities and campaigns from one unified dashboard.
+        Connect PromoMarket with your favorite e-commerce platforms, social media channels, and marketing tools. Manage all your promotional activities and campaigns from one unified dashboard.
       </p>
       <div className="flex flex-wrap justify-center items-center gap-8">
         <Image src="https://picsum.photos/seed/platform1/200/120?grayscale" alt="Platform Integration 1" width={200} height={120} data-ai-hint="connected devices" className="rounded-lg shadow-md"/>
@@ -302,15 +295,14 @@ const MultiPlatformIntegrationSection = () => (
   </section>
 );
 
-// Section 7: Customizable Dashboards
 const CustomizableDashboardsSection = () => (
   <section id="custom-dashboards" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row-reverse items-center gap-12">
       <div className="md:w-1/2">
         <LayoutGrid className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Your Dashboard, Your Way</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4">Your Promo Dashboard, Your Way</h2>
         <p className="text-lg text-muted-foreground mb-6">
-          Personalize your EarnHub dashboard to see the metrics that matter most to you. Arrange widgets, choose data visualizations, and create a workspace that fits your unique workflow.
+          Personalize your PromoMarket dashboard to see the metrics that matter most to your promotional efforts. Arrange widgets, choose data visualizations, and create a workspace that fits your unique workflow.
         </p>
         <Button variant="outline" asChild>
           <Link href="/dashboard">
@@ -321,7 +313,7 @@ const CustomizableDashboardsSection = () => (
       <div className="md:w-1/2">
         <Image
           src="https://picsum.photos/500/350?grayscale&random=dashboard"
-          alt="Customizable Dashboard"
+          alt="Customizable Promo Dashboard"
           width={500}
           height={350}
           data-ai-hint="dashboard interface"
@@ -332,43 +324,41 @@ const CustomizableDashboardsSection = () => (
   </section>
 );
 
-// Section 8: Deep Dive Analytics
 const DeepDiveAnalyticsSection = () => (
   <section id="deep-analytics" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10">
       <div className="text-center mb-12">
         <PieChart className="h-12 w-12 text-primary mb-4 mx-auto" />
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Deep Dive Analytics Suite</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Deep Dive Promotional Analytics</h2>
         <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Go beyond surface-level data. Our comprehensive analytics suite provides granular insights into campaign performance, customer behavior, conversion funnels, and more.
+          Go beyond surface-level data. Our comprehensive analytics suite provides granular insights into campaign performance, customer behavior, conversion funnels for your promotions.
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         <Card className="shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><AreaChart className="h-6 w-6 text-accent"/> Performance Metrics</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Track clicks, conversions, EPC, and ROI in real-time.</p></CardContent>
+          <CardContent><p className="text-sm text-muted-foreground">Track clicks, conversions, EPC, and ROI in real-time for all promotions.</p></CardContent>
         </Card>
         <Card className="shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><Users2 className="h-6 w-6 text-accent"/> Audience Insights</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Understand demographics, interests, and purchase patterns.</p></CardContent>
+          <CardContent><p className="text-sm text-muted-foreground">Understand demographics, interests, and purchase patterns related to your promotions.</p></CardContent>
         </Card>
         <Card className="shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><SlidersHorizontal className="h-6 w-6 text-accent"/> Funnel Optimization</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Identify drop-off points and optimize your conversion funnels.</p></CardContent>
+          <CardContent><p className="text-sm text-muted-foreground">Identify drop-off points and optimize your promotional conversion funnels.</p></CardContent>
         </Card>
       </div>
     </div>
   </section>
 );
 
-// Section 9: Versatile Content Generation
 const VersatileContentGenerationSection = () => (
   <section id="content-generation" className="py-16 md:py-24 bg-background">
      <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
       <div className="md:w-1/2">
         <Image
           src="https://picsum.photos/500/400?grayscale&random=content"
-          alt="Content Generation"
+          alt="AI Content Generation for Promotion"
           width={500}
           height={400}
           data-ai-hint="writing tools"
@@ -377,9 +367,9 @@ const VersatileContentGenerationSection = () => (
       </div>
       <div className="md:w-1/2">
         <FileText className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">AI Content for Every Need</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4">AI Content for Every Promotional Need</h2>
         <p className="text-lg text-muted-foreground mb-6">
-          Our AI content generator isn't just for product descriptions. Create blog posts, social media updates, email campaigns, ad copy, and more, all tailored to your brand voice and target audience.
+          Our AI content generator isn't just for product descriptions. Create blog posts, social media updates, email campaigns, ad copy for promotion, all tailored to your brand voice and target audience.
         </p>
         <div className="grid grid-cols-2 gap-4 text-muted-foreground">
           <div className="flex items-center"><Type className="h-5 w-5 text-accent mr-2" /> Blog Articles</div>
@@ -392,18 +382,17 @@ const VersatileContentGenerationSection = () => (
   </section>
 );
 
-// Section 10: Tailored for Affiliate Marketers
 const ForAffiliateMarketersSection = () => (
   <section id="for-affiliates" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <Target className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Built for Affiliate Marketers</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-4">Built for Promotional Success</h2>
       <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-        EarnHub provides specialized tools for affiliate marketers: link management, commission tracking, campaign optimization, and AI-driven product discovery to find high-converting offers.
+        PromoMarket provides specialized tools for digital marketers: link management, commission tracking, campaign optimization, and AI-driven discovery to find high-impact promotional opportunities.
       </p>
       <Image
           src="https://picsum.photos/600/300?grayscale&random=affiliate"
-          alt="Affiliate Marketing Tools"
+          alt="Digital Marketing Tools"
           width={600}
           height={300}
           data-ai-hint="marketing strategy"
@@ -413,15 +402,14 @@ const ForAffiliateMarketersSection = () => (
   </section>
 );
 
-// Section 11: Empowering Content Creators
 const ForContentCreatorsSection = () => (
   <section id="for-creators" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row-reverse items-center gap-12">
       <div className="md:w-1/2">
         <Camera className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Fueling Content Creators</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4">Fueling Content Promotion</h2>
         <p className="text-lg text-muted-foreground mb-6">
-          Monetize your passion. EarnHub helps content creators find relevant products to promote, generate engaging scripts or posts, and track earnings from their creative endeavors.
+          Monetize your passion. PromoMarket helps content creators find relevant products/services to promote, generate engaging scripts or posts, and track earnings from their promotional endeavors.
         </p>
          <div className="flex space-x-4">
             <Video className="h-8 w-8 text-accent"/>
@@ -432,7 +420,7 @@ const ForContentCreatorsSection = () => (
       <div className="md:w-1/2">
          <Image
           src="https://picsum.photos/500/350?grayscale&random=creator"
-          alt="Content Creator Tools"
+          alt="Content Creator Promotion Tools"
           width={500}
           height={350}
           data-ai-hint="creative workspace"
@@ -443,22 +431,21 @@ const ForContentCreatorsSection = () => (
   </section>
 );
 
-// Section 12: Solutions for Online Entrepreneurs
 const ForEntrepreneursSection = () => (
   <section id="for-entrepreneurs" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10">
        <div className="text-center mb-12">
         <Briefcase className="h-12 w-12 text-primary mb-4 mx-auto" />
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Your Partner in Online Business</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Your Partner in Digital Growth</h2>
         <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-          For entrepreneurs scaling their online ventures, EarnHub offers tools to diversify revenue streams, optimize marketing spend, and manage promotional activities efficiently.
+          For entrepreneurs scaling their online ventures, PromoMarket offers tools to diversify promotional channels, optimize marketing spend, and manage promotional activities efficiently.
         </p>
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <Image
             src="https://picsum.photos/500/300?grayscale&random=entrepreneur"
-            alt="Online Entrepreneurship"
+            alt="Online Entrepreneurship Promotion"
             width={500}
             height={300}
             data-ai-hint="business growth"
@@ -467,31 +454,30 @@ const ForEntrepreneursSection = () => (
         </div>
         <ul className="space-y-4 text-lg">
           <li className="flex items-start"><Rocket className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Scale your marketing efforts with AI automation.</span></li>
-          <li className="flex items-start"><DollarSign className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Maximize ROI with intelligent campaign management.</span></li>
-          <li className="flex items-start"><BarChartBig className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Access actionable data to drive strategic decisions.</span></li>
+          <li className="flex items-start"><DollarSign className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Maximize ROI with intelligent campaign management for promotions.</span></li>
+          <li className="flex items-start"><BarChartBig className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" /> <span>Access actionable data to drive strategic promotional decisions.</span></li>
         </ul>
       </div>
     </div>
   </section>
 );
 
-// Section 13: Real Success Stories (Case Studies)
 const SuccessStoriesSection = () => (
   <section id="success-stories" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10">
       <div className="text-center mb-12">
         <Award className="h-12 w-12 text-primary mb-4 mx-auto" />
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Real Results, Real Success</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Real Results, Real Growth</h2>
         <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Discover how users like you have transformed their online earnings with EarnHub.
+          Discover how users like you have transformed their digital promotions with PromoMarket.
         </p>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
         <Card className="shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader>
             <Image src="https://picsum.photos/80/80?grayscale&random=success1" alt="User 1" width={80} height={80} data-ai-hint="business person" className="rounded-full mb-2"/>
-            <CardTitle>Increased Conversions by 45%</CardTitle>
-            <CardDescription>"EarnHub's AI recommendations helped me target the right products to my audience." - Jane D.</CardDescription>
+            <CardTitle>Increased Promotional Conversions by 45%</CardTitle>
+            <CardDescription>"PromoMarket's AI recommendations helped me target the right promotional products to my audience." - Jane D.</CardDescription>
           </CardHeader>
           <CardContent>
              <Image src="https://picsum.photos/400/200?grayscale&random=case1" alt="Case Study 1 Graph" width={400} height={200} data-ai-hint="graph increase" className="rounded-md"/>
@@ -500,8 +486,8 @@ const SuccessStoriesSection = () => (
         <Card className="shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader>
             <Image src="https://picsum.photos/80/80?grayscale&random=success2" alt="User 2" width={80} height={80} data-ai-hint="happy user" className="rounded-full mb-2"/>
-            <CardTitle>Saved 10+ Hours Weekly on Content</CardTitle>
-            <CardDescription>"The AI content generator is a lifesaver! I can now focus on strategy." - Mark S.</CardDescription>
+            <CardTitle>Saved 10+ Hours Weekly on Promo Content</CardTitle>
+            <CardDescription>"The AI content generator for promotions is a lifesaver! I can now focus on strategy." - Mark S.</CardDescription>
           </CardHeader>
            <CardContent>
              <Image src="https://picsum.photos/400/200?grayscale&random=case2" alt="Case Study 2 Illustration" width={400} height={200} data-ai-hint="time saving" className="rounded-md"/>
@@ -519,14 +505,13 @@ const SuccessStoriesSection = () => (
   </section>
 );
 
-// Section 14: Trusted Partners & Ecosystem
 const PartnersSection = () => (
   <section id="partners" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <Handshake className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Our Trusted Partners & Ecosystem</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-4">Our Trusted Promotional Ecosystem</h2>
       <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-        We collaborate with leading platforms and services to provide you with a seamless and powerful experience.
+        We collaborate with leading platforms and services to provide you with a seamless and powerful promotional experience.
       </p>
       <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         {[...Array(5)].map((_, i) => (
@@ -537,15 +522,14 @@ const PartnersSection = () => (
   </section>
 );
 
-// Section 15: Robust Security & Reliability
 const SecuritySection = () => (
   <section id="security" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
       <div className="md:w-1/2">
-        <Server className="h-12 w-12 text-primary mb-4" /> {/* Changed icon to Server as ShieldCheck is not in Lucide */}
-        <h2 className="text-3xl font-bold text-foreground mb-4">Security You Can Trust</h2>
+        <Server className="h-12 w-12 text-primary mb-4" /> 
+        <h2 className="text-3xl font-bold text-foreground mb-4">Security You Can Trust for Your Promotions</h2>
         <p className="text-lg text-muted-foreground mb-6">
-          Your data security and platform reliability are our top priorities. We employ industry-standard security measures and robust infrastructure to keep your information safe and EarnHub running smoothly.
+          Your data security and platform reliability are our top priorities. We employ industry-standard security measures and robust infrastructure to keep your promotional information safe and PromoMarket running smoothly.
         </p>
         <ul className="space-y-2 text-muted-foreground">
           <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> End-to-end data encryption</li>
@@ -556,7 +540,7 @@ const SecuritySection = () => (
       <div className="md:w-1/2">
         <Image
           src="https://picsum.photos/500/350?grayscale&random=security"
-          alt="Data Security"
+          alt="Data Security for Promotions"
           width={500}
           height={350}
           data-ai-hint="data security"
@@ -567,51 +551,49 @@ const SecuritySection = () => (
   </section>
 );
 
-// Section 16: Vibrant Community & Support
 const CommunitySupportSection = () => (
   <section id="community-support" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <Users2 className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Vibrant Community</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Vibrant Promo Community</h2>
       <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-        Connect with fellow EarnHub users, share strategies, and get support from our active community and dedicated helpdesk. We're here to help you succeed.
+        Connect with fellow PromoMarket users, share strategies, and get support from our active community and dedicated helpdesk. We're here to help your promotions succeed.
       </p>
       <div className="grid md:grid-cols-3 gap-8">
         <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><MessageCircleIcon className="h-6 w-6 text-accent"/> Community Forum</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Ask questions, share tips, and learn from others.</p></CardContent>
+          <CardContent><p className="text-sm text-muted-foreground">Ask questions, share promotion tips, and learn from others.</p></CardContent>
         </Card>
         <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><LifeBuoy className="h-6 w-6 text-accent"/> Dedicated Support</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Our support team is ready to assist you with any queries.</p></CardContent>
+          <CardContent><p className="text-sm text-muted-foreground">Our support team is ready to assist you with any PromoMarket queries.</p></CardContent>
         </Card>
          <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><ListChecks className="h-6 w-6 text-accent"/> Knowledge Base</CardTitle></CardHeader>
-          <CardContent><p className="text-sm text-muted-foreground">Access tutorials, guides, and best practices.</p></CardContent>
+          <CardContent><p className="text-sm text-muted-foreground">Access tutorials, guides, and best practices for digital promotion.</p></CardContent>
         </Card>
       </div>
     </div>
   </section>
 );
 
-// Section 17: Our Vision & Mission
 const VisionMissionSection = () => (
   <section id="vision-mission" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row-reverse items-center gap-12">
        <div className="md:w-1/2">
         <Eye className="h-12 w-12 text-primary mb-4" />
-        <h2 className="text-3xl font-bold text-foreground mb-4">Our Vision for the Future</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4">Our Vision for the Future of Promotion</h2>
         <p className="text-lg text-muted-foreground mb-3">
-          <strong>Mission:</strong> To empower individuals and businesses to achieve financial independence through innovative and accessible online earning solutions.
+          <strong>Mission:</strong> To empower individuals and businesses to achieve digital marketing success through innovative and accessible online promotion solutions.
         </p>
         <p className="text-lg text-muted-foreground mb-6">
-          <strong>Vision:</strong> To be the leading global platform that democratizes online earning, fostering a world where anyone can build a sustainable income online.
+          <strong>Vision:</strong> To be the leading global platform that democratizes digital market promotion, fostering a world where anyone can build a thriving online presence.
         </p>
       </div>
       <div className="md:w-1/2">
          <Image
           src="https://picsum.photos/500/350?grayscale&random=vision"
-          alt="Future Vision"
+          alt="Future Vision of Promotion"
           width={500}
           height={350}
           data-ai-hint="future vision"
@@ -622,50 +604,49 @@ const VisionMissionSection = () => (
   </section>
 );
 
-// Section 18: Transparent Pricing / Get Started Free
 const PricingSection = () => (
   <section id="pricing" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <Tag className="h-12 w-12 text-primary mb-4 mx-auto" />
-      <h2 className="text-3xl font-bold text-foreground mb-4">Simple, Transparent Pricing</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-4">Simple, Transparent Pricing for PromoMarket</h2>
       <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-        Get started with EarnHub for free, and explore flexible plans that scale with your success. No hidden fees, just pure value.
+        Get started with PromoMarket for free, and explore flexible plans that scale with your promotional success. No hidden fees, just pure value.
       </p>
       <div className="grid md:grid-cols-3 gap-8">
         <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all duration-300">
-          <CardHeader className="bg-muted/50"><CardTitle>Free Tier</CardTitle><CardDescription>Perfect for getting started</CardDescription></CardHeader>
+          <CardHeader className="bg-muted/50"><CardTitle>Free Tier</CardTitle><CardDescription>Perfect for getting started with promotions</CardDescription></CardHeader>
           <CardContent className="pt-6">
             <p className="text-4xl font-bold mb-4">$0<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
             <ul className="space-y-2 text-sm text-muted-foreground mb-6 text-left">
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Basic AI Tools</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Limited Tracking</li>
+              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Basic AI Promo Tools</li>
+              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Limited Promo Tracking</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Community Access</li>
             </ul>
-            <Button variant="outline" className="w-full" asChild><Link href="/client/home">Sign Up for Free</Link></Button>
+            <Button variant="outline" className="w-full" asChild><Link href="/client/home">Sign Up for PromoMarket Free</Link></Button>
           </CardContent>
         </Card>
          <Card className="shadow-xl border-2 border-primary relative">
            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded-full">Most Popular</div>
-          <CardHeader><CardTitle>Pro Plan</CardTitle><CardDescription>For serious marketers</CardDescription></CardHeader>
+          <CardHeader><CardTitle>Pro Plan</CardTitle><CardDescription>For serious digital marketers</CardDescription></CardHeader>
           <CardContent className="pt-6">
             <p className="text-4xl font-bold mb-4">$29<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
             <ul className="space-y-2 text-sm text-muted-foreground mb-6 text-left">
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Advanced AI Suite</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Full Analytics</li>
+              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Advanced AI Promo Suite</li>
+              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Full Promotional Analytics</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Priority Support</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> More Integrations</li>
             </ul>
-            <Button className="w-full bg-primary hover:bg-primary/90" asChild><Link href="/client/home">Choose Pro</Link></Button>
+            <Button className="w-full bg-primary hover:bg-primary/90" asChild><Link href="/client/home">Choose Pro on PromoMarket</Link></Button>
           </CardContent>
         </Card>
         <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all duration-300">
-          <CardHeader className="bg-muted/50"><CardTitle>Enterprise</CardTitle><CardDescription>For large teams & agencies</CardDescription></CardHeader>
+          <CardHeader className="bg-muted/50"><CardTitle>Enterprise</CardTitle><CardDescription>For large teams & agencies promoting at scale</CardDescription></CardHeader>
           <CardContent className="pt-6">
             <p className="text-4xl font-bold mb-4">Custom</p>
              <ul className="space-y-2 text-sm text-muted-foreground mb-6 text-left">
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> All Pro Features</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Dedicated Account Manager</li>
-              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Custom Solutions</li>
+              <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Custom Promo Solutions</li>
             </ul>
             <Button variant="outline" className="w-full" asChild><Link href="/client/contact">Contact Sales</Link></Button>
           </CardContent>
@@ -675,28 +656,27 @@ const PricingSection = () => (
   </section>
 );
 
-// Section 19: Frequently Asked Questions (FAQ)
 const FAQSection = () => {
   const faqs = [
     {
-      question: "What is EarnHub?",
-      answer: "EarnHub is a comprehensive platform designed to help individuals and businesses monetize their online presence through affiliate marketing, AI-powered content creation, and product recommendations."
+      question: "What is PromoMarket?",
+      answer: "PromoMarket is a comprehensive platform designed to help individuals and businesses master digital market promotion through AI-powered tools, analytics, and content generation."
     },
     {
-      question: "How does the AI product recommender work?",
-      answer: "Our AI analyzes user profiles, interests, and market trends to suggest relevant and high-converting products for you to promote."
+      question: "How does the AI product recommender work for promotions?",
+      answer: "Our AI analyzes user profiles, interests, and market trends to suggest relevant and high-converting products for you to promote effectively."
     },
     {
-      question: "Is there a free trial or a free plan?",
-      answer: "Yes, EarnHub offers a free tier with basic features to get you started. We also have premium plans with more advanced capabilities."
+      question: "Is there a free trial or a free plan for PromoMarket?",
+      answer: "Yes, PromoMarket offers a free tier with basic features to get you started. We also have premium plans with more advanced promotional capabilities."
     },
     {
-      question: "Can I integrate EarnHub with my existing tools?",
-      answer: "Absolutely! EarnHub supports integration with various popular e-commerce platforms, social media channels, and marketing automation tools."
+      question: "Can I integrate PromoMarket with my existing marketing tools?",
+      answer: "Absolutely! PromoMarket supports integration with various popular e-commerce platforms, social media channels, and marketing automation tools to streamline your promotions."
     },
     {
-      question: "How secure is my data on EarnHub?",
-      answer: "We take data security very seriously. EarnHub employs industry-standard encryption and security protocols to protect your information."
+      question: "How secure is my promotional data on PromoMarket?",
+      answer: "We take data security very seriously. PromoMarket employs industry-standard encryption and security protocols to protect your promotional information."
     }
   ];
 
@@ -707,7 +687,7 @@ const FAQSection = () => {
           <HelpCircle className="h-12 w-12 text-primary mb-4 mx-auto" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Frequently Asked Questions</h2>
           <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-            Got questions? We've got answers. If you don't find what you're looking for, feel free to contact us.
+            Got questions about PromoMarket? We've got answers. If you don't find what you're looking for, feel free to contact us.
           </p>
         </div>
         <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
@@ -725,18 +705,17 @@ const FAQSection = () => {
   );
 };
 
-// Section 20: Final Call to Action (Join EarnHub Today)
 const FinalCTASection = () => (
   <section id="join-today" className="py-16 md:py-24 bg-gradient-to-r from-primary to-accent">
     <div className="container mx-auto px-6 md:px-10 text-center">
       <UserPlus className="h-16 w-16 text-white mb-6 mx-auto" />
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Elevate Your Online Earnings?</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Elevate Your Digital Promotions?</h2>
       <p className="text-xl text-primary-foreground mb-10 max-w-3xl mx-auto">
-        Join thousands of successful marketers, creators, and entrepreneurs who are already using EarnHub to achieve their financial goals. Sign up today and unlock your full potential.
+        Join thousands of successful digital marketers, creators, and entrepreneurs who are already using PromoMarket to achieve their growth goals. Sign up today and unlock your full promotional potential.
       </p>
       <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-10 py-6">
         <Link href="/client/home">
-          Get Started with EarnHub <ArrowRightCircle className="ml-3 h-6 w-6" />
+          Get Started with PromoMarket <ArrowRightCircle className="ml-3 h-6 w-6" />
         </Link>
       </Button>
     </div>
@@ -750,7 +729,7 @@ export default function LandingPage() {
       <header className="py-4 px-6 md:px-10 border-b sticky top-0 bg-background/95 backdrop-blur-sm z-50">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
-             <EarnHubLogo/>
+             <PromoMarketLogo/>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/client/home" className="text-sm font-medium text-muted-foreground hover:text-primary">
@@ -797,11 +776,10 @@ export default function LandingPage() {
 
       <footer className="py-8 px-6 md:px-10 border-t bg-card">
         <div className="container mx-auto text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} EarnHub. All rights reserved.</p>
-          <p className="text-sm mt-1">Your gateway to online earning.</p>
+          <p>&copy; {new Date().getFullYear()} PromoMarket. All rights reserved.</p>
+          <p className="text-sm mt-1">Your gateway to digital market promotion.</p>
         </div>
       </footer>
     </div>
   );
 }
-

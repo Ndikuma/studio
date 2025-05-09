@@ -25,8 +25,8 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const subjectOptions = [
   { value: "general_inquiry", label: "General Inquiry" },
-  { value: "product_support", label: "Product Support" },
-  { value: "order_status", label: "Order Status" },
+  { value: "promo_tool_support", label: "Promo Tool Support" },
+  { value: "billing_question", label: "Billing Question" },
   { value: "feedback", label: "Feedback & Suggestions" },
   { value: "partnership", label: "Partnership Opportunities" },
 ];
@@ -50,7 +50,7 @@ export default function ClientContactPage() {
     await new Promise(resolve => setTimeout(resolve, 1000));
     toast({
       title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      description: "Thank you for contacting PromoMarket. We'll get back to you soon.",
     });
     form.reset();
   };
@@ -59,10 +59,10 @@ export default function ClientContactPage() {
     <div className="space-y-12">
       <section className="text-center py-8">
         <h1 className="text-4xl font-bold tracking-tight text-foreground">
-          Get in Touch
+          Get in Touch with PromoMarket
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          We're here to help and answer any question you might have. We look forward to hearing from you!
+          We're here to help and answer any question you might have about our promotional tools and services. We look forward to hearing from you!
         </p>
       </section>
 
@@ -130,7 +130,7 @@ export default function ClientContactPage() {
                     <FormItem>
                       <FormLabel>Message</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Your message..." className="min-h-[120px]" {...field} />
+                        <Textarea placeholder="Your message about PromoMarket..." className="min-h-[120px]" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -148,14 +148,14 @@ export default function ClientContactPage() {
           <Card className="shadow-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2"><Info className="h-6 w-6 text-primary" /> Contact Information</CardTitle>
-              <CardDescription>You can also reach us through the following channels.</CardDescription>
+              <CardDescription>You can also reach PromoMarket through the following channels.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-muted-foreground mt-1 shrink-0" />
                 <div>
                   <h4 className="font-medium text-foreground">Email</h4>
-                  <a href="mailto:support@earnhub.com" className="text-primary hover:underline">support@earnhub.com</a>
+                  <a href="mailto:support@promomarket.com" className="text-primary hover:underline">support@promomarket.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -169,7 +169,7 @@ export default function ClientContactPage() {
                 <MapPin className="h-5 w-5 text-muted-foreground mt-1 shrink-0" />
                 <div>
                   <h4 className="font-medium text-foreground">Office Address</h4>
-                  <p className="text-muted-foreground">123 EarnHub Street, Suite 404, Online City, World</p>
+                  <p className="text-muted-foreground">123 PromoMarket Street, Suite 404, Online City, World</p>
                 </div>
               </div>
             </CardContent>
@@ -180,11 +180,10 @@ export default function ClientContactPage() {
                <CardTitle className="flex items-center gap-2"><Building className="h-6 w-6 text-primary" /> Our Location</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              {/* Placeholder for a map - In a real app, use an embedded map component */}
               <div className="aspect-video bg-muted flex items-center justify-center">
                  <Image 
                     src="https://picsum.photos/seed/maplocation/600/300" 
-                    alt="Map placeholder" 
+                    alt="Map placeholder for PromoMarket" 
                     width={600} 
                     height={300} 
                     className="w-full h-full object-cover"

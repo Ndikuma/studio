@@ -1,18 +1,18 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { EarnHubLogo } from '@/components/icons/earnhub-logo';
+import { PromoMarketLogo } from '@/components/icons/promomarket-logo';
 import type { Metadata } from 'next';
 import { ShoppingBag, User, Mail, HomeIcon } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Client Area - EarnHub',
-  description: 'Explore products and manage your account on EarnHub.',
+  title: 'Client Area - PromoMarket',
+  description: 'Explore promotional tools and manage your account on PromoMarket.',
 };
 
 const clientNavItems = [
   { href: '/client/home', label: 'Home', icon: HomeIcon },
-  { href: '/client/products', label: 'Products', icon: ShoppingBag },
+  { href: '/client/products', label: 'Products for Promotion', icon: ShoppingBag },
   { href: '/client/profile', label: 'My Profile', icon: User },
   { href: '/client/contact', label: 'Contact Us', icon: Mail },
 ];
@@ -27,7 +27,7 @@ export default function ClientLayout({
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/client/home" className="mr-6 flex items-center space-x-2">
-            <EarnHubLogo />
+            <PromoMarketLogo />
           </Link>
           <nav className="hidden md:flex gap-6">
             {clientNavItems.map((item) => (
@@ -54,7 +54,7 @@ export default function ClientLayout({
       <main className="flex-1 container py-8">{children}</main>
       <footer className="py-8 px-6 md:px-10 border-t bg-card">
         <div className="container mx-auto text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} EarnHub Client Area. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PromoMarket Client Area. All rights reserved.</p>
         </div>
       </footer>
     </div>

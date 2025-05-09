@@ -1,3 +1,4 @@
+
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
@@ -8,10 +9,10 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { ChartConfig, ChartContainer, ChartTooltip as ShadcnChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const kpiData = [
-  { title: 'Total Revenue', value: '$12,875', change: '+12.5%', icon: DollarSign, changeType: 'positive' as const },
-  { title: 'Total Conversions', value: '862', change: '+8.2%', icon: Activity, changeType: 'positive' as const },
-  { title: 'Average Click-Through Rate', value: '2.3%', change: '-0.5%', icon: BarChart3, changeType: 'negative' as const },
-  { title: 'Active Affiliates', value: '128', change: '+5', icon: Users, changeType: 'positive' as const },
+  { title: 'Total Promo Revenue', value: '$12,875', change: '+12.5%', icon: DollarSign, changeType: 'positive' as const },
+  { title: 'Total Promo Conversions', value: '862', change: '+8.2%', icon: Activity, changeType: 'positive' as const },
+  { title: 'Avg. Promo Click-Through Rate', value: '2.3%', change: '-0.5%', icon: BarChart3, changeType: 'negative' as const },
+  { title: 'Active Promoters/Affiliates', value: '128', change: '+5', icon: Users, changeType: 'positive' as const },
 ];
 
 const earningsChartData = [
@@ -36,10 +37,10 @@ const chartConfig: ChartConfig = {
 };
 
 const transactionsData = [
-  { id: 'TRX001', date: '2024-07-15', campaign: 'Summer Sale Ad', amount: '$250.00', status: 'Completed' },
-  { id: 'TRX002', date: '2024-07-14', campaign: 'New Product Launch', amount: '$120.50', status: 'Completed' },
-  { id: 'TRX003', date: '2024-07-13', campaign: 'Influencer Collab', amount: '$85.75', status: 'Pending' },
-  { id: 'TRX004', date: '2024-07-12', campaign: 'Email Marketing Q3', amount: '$310.00', status: 'Completed' },
+  { id: 'TRX001', date: '2024-07-15', campaign: 'Summer Sale Promotion', amount: '$250.00', status: 'Completed' },
+  { id: 'TRX002', date: '2024-07-14', campaign: 'New Product Launch Promo', amount: '$120.50', status: 'Completed' },
+  { id: 'TRX003', date: '2024-07-13', campaign: 'Influencer Collaboration', amount: '$85.75', status: 'Pending' },
+  { id: 'TRX004', date: '2024-07-12', campaign: 'Email Marketing Q3 Promo', amount: '$310.00', status: 'Completed' },
   { id: 'TRX005', date: '2024-07-11', campaign: 'Social Media Boost', amount: '$55.20', status: 'Failed' },
 ];
 
@@ -48,8 +49,8 @@ export default function EarningsTrackerPage() {
   return (
     <>
       <PageHeader
-        title="Earnings Tracker"
-        description="Monitor your financial performance, track clicks, conversions, and earnings."
+        title="Performance Tracker - PromoMarket"
+        description="Monitor your financial performance, track clicks, conversions, and earnings from your promotions."
         icon={TrendingUp}
       />
 
@@ -74,8 +75,8 @@ export default function EarningsTrackerPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle>Monthly Performance</CardTitle>
-            <CardDescription>Earnings and Clicks trend over the last 7 months.</CardDescription>
+            <CardTitle>Monthly Promotion Performance</CardTitle>
+            <CardDescription>Earnings and Clicks trend from promotions over the last 7 months.</CardDescription>
           </CardHeader>
           <CardContent className="h-[350px] pr-0">
             <ChartContainer config={chartConfig} className="w-full h-full">
@@ -99,12 +100,11 @@ export default function EarningsTrackerPage() {
         </Card>
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle>Conversion Funnel (Placeholder)</CardTitle>
-            <CardDescription>Visualize user journey from click to conversion.</CardDescription>
+            <CardTitle>Promotion Conversion Funnel (Placeholder)</CardTitle>
+            <CardDescription>Visualize user journey from click to conversion for your promotions.</CardDescription>
           </CardHeader>
           <CardContent className="h-[350px] flex items-center justify-center">
-            <p className="text-muted-foreground">Conversion Funnel Chart Coming Soon</p>
-            {/* Placeholder for a funnel chart or similar visualization */}
+            <p className="text-muted-foreground">Promotion Conversion Funnel Chart Coming Soon</p>
           </CardContent>
         </Card>
       </div>
@@ -112,8 +112,8 @@ export default function EarningsTrackerPage() {
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle>Recent Transactions</CardTitle>
-          <CardDescription>A log of your latest earnings and payouts.</CardDescription>
+          <CardTitle>Recent Promotional Transactions</CardTitle>
+          <CardDescription>A log of your latest earnings and payouts from promotions.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>

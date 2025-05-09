@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -20,11 +21,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 const toneOptions = ['Professional', 'Casual', 'Enthusiastic', 'Humorous', 'Formal', 'Persuasive'];
 
 const formSchema = z.object({
-  productName: z.string().min(3, 'Product name must be at least 3 characters long.'),
-  productDescription: z.string().min(50, 'Product description must be at least 50 characters long.'),
-  targetAudience: z.string().min(10, 'Target audience must be at least 10 characters long.'),
-  keyFeatures: z.string().min(20, 'Key features must be at least 20 characters long.'),
-  tone: z.string().min(1, 'Please select a tone.'),
+  productName: z.string().min(3, 'Product/Service name must be at least 3 characters long.'),
+  productDescription: z.string().min(50, 'Product/Service description must be at least 50 characters long.'),
+  targetAudience: z.string().min(10, 'Target audience description must be at least 10 characters long.'),
+  keyFeatures: z.string().min(20, 'Key features/benefits must be at least 20 characters long.'),
+  tone: z.string().min(1, 'Please select a tone for the promotional content.'),
 });
 
 type ContentFormValues = z.infer<typeof formSchema>;
@@ -54,15 +55,15 @@ export default function MarketingContentGeneratorPage() {
       const result = await generateMarketingContent(data as MarketingContentInput);
       setGeneratedContent(result);
       toast({
-        title: "Marketing Content Generated!",
-        description: "AI has successfully created content for your product.",
+        title: "Promotional Content Generated!",
+        description: "AI has successfully created content for your promotion.",
       });
     } catch (err) {
       console.error(err);
       const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred.";
       setError(errorMessage);
       toast({
-        title: "Error Generating Content",
+        title: "Error Generating Promotional Content",
         description: errorMessage,
         variant: "destructive",
       });
@@ -74,16 +75,16 @@ export default function MarketingContentGeneratorPage() {
   return (
     <>
       <PageHeader
-        title="AI Marketing Content Generator"
-        description="Craft compelling marketing copy for your products with the power of AI."
+        title="AI Marketing Content Generator - PromoMarket"
+        description="Craft compelling promotional copy for your products or services with the power of AI."
         icon={PenLine}
       />
 
       <div className="grid md:grid-cols-3 gap-8">
         <Card className="md:col-span-1 shadow-lg">
           <CardHeader>
-            <CardTitle>Product Information</CardTitle>
-            <CardDescription>Provide details about your product to generate marketing content.</CardDescription>
+            <CardTitle>Promotion Details</CardTitle>
+            <CardDescription>Provide details about your product/service to generate promotional content.</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -93,9 +94,9 @@ export default function MarketingContentGeneratorPage() {
                   name="productName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Product Name</FormLabel>
+                      <FormLabel>Product/Service Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., QuantumLeap X1 Bicycle" {...field} />
+                        <Input placeholder="e.g., QuantumLeap X1 Bicycle, Pro Marketing Course" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,10 +107,10 @@ export default function MarketingContentGeneratorPage() {
                   name="productDescription"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Product Description</FormLabel>
+                      <FormLabel>Product/Service Description</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Describe your product in detail. What it is, what it does, why it's special..."
+                          placeholder="Describe your product/service in detail. What it is, what it does, why it's special for promotion..."
                           className="min-h-[120px] resize-y"
                           {...field}
                         />
@@ -123,9 +124,9 @@ export default function MarketingContentGeneratorPage() {
                   name="targetAudience"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Target Audience</FormLabel>
+                      <FormLabel>Target Audience for Promotion</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Tech-savvy millennials, busy parents, eco-conscious consumers" {...field} />
+                        <Input placeholder="e.g., Tech-savvy millennials, busy parents, aspiring digital marketers" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -136,10 +137,10 @@ export default function MarketingContentGeneratorPage() {
                   name="keyFeatures"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Key Features/Benefits</FormLabel>
+                      <FormLabel>Key Features/Benefits for Promotion</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="List 3-5 key features or benefits. e.g., Ultra-lightweight frame, 20-hour battery life, AI-powered noise cancellation"
+                          placeholder="List 3-5 key features or benefits. e.g., Ultra-lightweight frame, 20-hour battery life, AI-powered noise cancellation, Boosts conversion by 50%"
                           className="min-h-[100px] resize-y"
                           {...field}
                         />
@@ -153,7 +154,7 @@ export default function MarketingContentGeneratorPage() {
                   name="tone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Desired Tone</FormLabel>
+                      <FormLabel>Desired Tone for Promotion</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
@@ -176,7 +177,7 @@ export default function MarketingContentGeneratorPage() {
                   ) : (
                     <Sparkles className="mr-2 h-4 w-4" />
                   )}
-                  Generate Content
+                  Generate Promotional Content
                 </Button>
               </form>
             </Form>
@@ -187,14 +188,14 @@ export default function MarketingContentGeneratorPage() {
           {isLoading && (
             <Card className="shadow-lg flex flex-col items-center justify-center h-full min-h-[400px]">
               <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
-              <p className="text-lg text-muted-foreground">Generating content...</p>
+              <p className="text-lg text-muted-foreground">Generating promotional content...</p>
             </Card>
           )}
           {error && !isLoading && (
              <Card className="shadow-lg border-destructive">
               <CardHeader className="flex-row items-center gap-2">
                  <AlertTriangle className="h-6 w-6 text-destructive" />
-                <CardTitle className="text-destructive">Failed to Generate Content</CardTitle>
+                <CardTitle className="text-destructive">Failed to Generate Promotional Content</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-destructive-foreground">{error}</p>
@@ -208,7 +209,7 @@ export default function MarketingContentGeneratorPage() {
             <div className="space-y-6">
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>Generated Headline</CardTitle>
+                  <CardTitle>Generated Promotional Headline</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-auto max-h-[100px] w-full pr-4">
@@ -218,7 +219,7 @@ export default function MarketingContentGeneratorPage() {
               </Card>
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>Generated Body</CardTitle>
+                  <CardTitle>Generated Promotional Body</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-auto max-h-[300px] w-full pr-4">
@@ -228,7 +229,7 @@ export default function MarketingContentGeneratorPage() {
               </Card>
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>Generated Call to Action</CardTitle>
+                  <CardTitle>Generated Promotional Call to Action</CardTitle>
                 </CardHeader>
                 <CardContent>
                    <ScrollArea className="h-auto max-h-[100px] w-full pr-4">
@@ -241,8 +242,8 @@ export default function MarketingContentGeneratorPage() {
            {!isLoading && !error && !generatedContent && (
              <Card className="shadow-lg flex flex-col items-center justify-center h-full min-h-[400px] bg-secondary/50">
               <PenLine className="h-12 w-12 text-muted-foreground mb-4" />
-              <p className="text-lg text-muted-foreground">Your generated marketing content will appear here.</p>
-              <p className="text-sm text-muted-foreground text-center mt-1">Fill out the form and click "Generate Content".</p>
+              <p className="text-lg text-muted-foreground">Your generated promotional content will appear here.</p>
+              <p className="text-sm text-muted-foreground text-center mt-1">Fill out the form and click "Generate Promotional Content".</p>
             </Card>
           )}
         </div>

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { PageHeader } from '@/components/shared/page-header';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';

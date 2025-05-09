@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -15,6 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useToast } from '@/hooks/use-toast';
 import { db } from '@/lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+// import { useTheme } from 'next-themes'; // Not strictly needed if directly managing localStorage and DOM class for next-themes
 
 const SETTINGS_COLLECTION = 'user_settings';
 const USER_SETTINGS_DOC_ID = 'main_user_profile'; // Using a fixed ID for demo purposes
@@ -35,6 +37,7 @@ export default function SettingsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // const { setTheme } = useTheme(); // Can be used as an alternative to direct localStorage/DOM manipulation
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(settingsSchema),
@@ -44,7 +47,7 @@ export default function SettingsPage() {
       emailNotifications: true,
       pushNotifications: false,
       weeklySummary: true,
-      darkMode: false,
+      darkMode: false, // Initial default, will be overridden by loaded settings or current theme
     },
   });
 
@@ -56,38 +59,48 @@ export default function SettingsPage() {
         const docRef = doc(db, SETTINGS_COLLECTION, USER_SETTINGS_DOC_ID);
         const docSnap = await getDoc(docRef);
 
-        let initialDarkMode = false;
-        const storedTheme = localStorage.getItem('theme');
+        let determinedDarkModeForSwitch = false;
 
         if (docSnap.exists()) {
           const data = docSnap.data() as SettingsFormValues;
-          form.reset(data);
-          initialDarkMode = data.darkMode;
-           if (storedTheme && storedTheme !== (data.darkMode ? 'dark' : 'light')) {
-            // Firestore has a theme, but localStorage is different or not yet aligned
-            // We prioritize Firestore's setting on initial load here if they differ
-            localStorage.setItem('theme', data.darkMode ? 'dark' : 'light');
-          }
-        } else if (storedTheme) {
-            initialDarkMode = storedTheme === 'dark';
-            form.setValue('darkMode', initialDarkMode);
-        } else {
-          // No settings in Firestore, no theme in localStorage
-          // Check system preference for dark mode
-          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            initialDarkMode = true;
-          }
-          form.setValue('darkMode', initialDarkMode);
-          localStorage.setItem('theme', initialDarkMode ? 'dark' : 'light');
-        }
-        
-        // Apply initial theme
-        if (initialDarkMode) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
+          form.reset(data); // Populates the entire form, including 'darkMode' switch from Firestore
+          determinedDarkModeForSwitch = data.darkMode; // User's saved preference
 
+          // Sync next-themes (localStorage) and DOM with this saved preference
+          const themeToApply = determinedDarkModeForSwitch ? 'dark' : 'light';
+          localStorage.setItem('theme', themeToApply);
+          if (determinedDarkModeForSwitch) {
+            if (!document.documentElement.classList.contains('dark')) document.documentElement.classList.add('dark');
+          } else {
+            if (document.documentElement.classList.contains('dark')) document.documentElement.classList.remove('dark');
+          }
+        } else {
+          // No settings in Firestore.
+          // next-themes has initialized using localStorage or system preference.
+          // localStorage.getItem('theme') should reflect what next-themes is using.
+          const currentThemeInLocalStorage = localStorage.getItem('theme');
+          
+          if (currentThemeInLocalStorage === 'dark') {
+            determinedDarkModeForSwitch = true;
+          } else if (currentThemeInLocalStorage === 'light') {
+            determinedDarkModeForSwitch = false;
+          } else {
+            // Fallback if localStorage.getItem('theme') is null (e.g. ThemeProvider used system & set it)
+            // or next-themes hasn't hydrated/set it yet. Check system preference.
+            determinedDarkModeForSwitch = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+            // Ensure localStorage is set so next-themes picks it up consistently.
+            localStorage.setItem('theme', determinedDarkModeForSwitch ? 'dark' : 'light');
+          }
+          
+          form.setValue('darkMode', determinedDarkModeForSwitch, { shouldDirty: false });
+
+          // Ensure DOM matches, though next-themes should handle this if localStorage was just set.
+          if (determinedDarkModeForSwitch) {
+             if (!document.documentElement.classList.contains('dark')) document.documentElement.classList.add('dark');
+          } else {
+             if (document.documentElement.classList.contains('dark')) document.documentElement.classList.remove('dark');
+          }
+        }
       } catch (err) {
         console.error("Failed to load settings:", err);
         setError("Failed to load settings. Please try again later.");
@@ -102,7 +115,7 @@ export default function SettingsPage() {
     };
     loadSettings();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form.reset, toast]);
+  }, [form, toast]); // Use 'form' object as dependency
 
 
   const onSubmit: SubmitHandler<SettingsFormValues> = async (data) => {
@@ -115,8 +128,10 @@ export default function SettingsPage() {
         title: "Settings Saved",
         description: "Your preferences have been updated successfully.",
       });
-      // Ensure localStorage theme is synced with saved dark mode preference
-      localStorage.setItem('theme', data.darkMode ? 'dark' : 'light');
+      // Ensure localStorage theme and DOM is synced with saved dark mode preference
+      const themeToApply = data.darkMode ? 'dark' : 'light';
+      localStorage.setItem('theme', themeToApply);
+      // setTheme(themeToApply); // Alternative using useTheme()
       if (data.darkMode) {
         document.documentElement.classList.add('dark');
       } else {
@@ -297,13 +312,15 @@ export default function SettingsPage() {
                           <Switch
                             checked={field.value}
                             onCheckedChange={(checked) => {
-                              field.onChange(checked); // Update form state
+                              field.onChange(checked); // Update form state (RHF)
+                              const themeToSet = checked ? 'dark' : 'light';
+                              localStorage.setItem('theme', themeToSet); // Update localStorage for next-themes
+                              // setTheme(themeToSet); // Alternative using useTheme()
+                              // Directly update DOM for immediate visual feedback
                               if (checked) {
                                 document.documentElement.classList.add('dark');
-                                localStorage.setItem('theme', 'dark');
                               } else {
                                 document.documentElement.classList.remove('dark');
-                                localStorage.setItem('theme', 'light');
                               }
                             }}
                           />
@@ -326,3 +343,4 @@ export default function SettingsPage() {
     </>
   );
 }
+

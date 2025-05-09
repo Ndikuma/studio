@@ -42,9 +42,9 @@ import {
   Contact,
   UserCircle2,
   Home,
-  Building, // For Brands
-  Megaphone, // For Campaigns
-  Link2 as LinkIcon, // For Affiliate Links
+  Building, 
+  Megaphone, 
+  Link2 as LinkIcon, 
 } from 'lucide-react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -54,7 +54,7 @@ import { PromoMarketLogo } from '@/components/icons/promomarket-logo';
 
 const featureCards = [
   {
-    icon: Brain, // Changed from Zap
+    icon: Brain, 
     title: 'AI-Powered Promotion Suite',
     description: 'Leverage AI for item recommendations, content generation, and campaign insights to maximize your promotional impact.',
     dataAiHint: 'artificial intelligence technology'
@@ -66,7 +66,7 @@ const featureCards = [
     dataAiHint: 'data analytics chart'
   },
   {
-    icon: LayoutGrid, // Changed from MessageSquare
+    icon: LayoutGrid, 
     title: 'Centralized Management',
     description: 'Manage brands, promotional items, affiliate links, campaigns, and content all in one unified platform.',
     dataAiHint: 'dashboard interface'
@@ -131,7 +131,7 @@ const HeroSection = () => (
         PromoMarket is your ultimate platform to manage brands, discover promotional items, launch campaigns, and track earnings. Maximize your online impact with AI-driven tools.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+        <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Link href="/client/home">
             Explore Client Area <Home className="ml-2 h-5 w-5" />
           </Link>
@@ -243,8 +243,8 @@ const TestimonialsSection = () => (
       </div>
       <div className="text-center mt-12">
         <Button variant="outline" size="lg" asChild>
-          <Link href="#testimonials-more"> {/* Placeholder link */}
-            Read More Testimonials <ArrowRight className="ml-2 h-4 w-4" />
+          <Link href="/client/contact"> 
+            Share Your Story <Send className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </div>
@@ -252,16 +252,14 @@ const TestimonialsSection = () => (
   </section>
 );
 
-// Placeholder for additional sections to reach 20 total. 
-// Actual content would depend on specific aspects of "EarnHub" to highlight.
-const PlaceholderSection = ({ title, icon: Icon, description, imageHint, imageUrlSeed }: { title: string, icon: React.ElementType, description: string, imageHint: string, imageUrlSeed: string }) => (
+const DetailedFeatureSection = ({ title, icon: Icon, description, imageHint, imageUrlSeed, ctaLink = "/client/home", ctaText = "Learn More" }: { title: string, icon: React.ElementType, description: string, imageHint: string, imageUrlSeed: string, ctaLink?: string, ctaText?: string }) => (
   <section className="py-16 md:py-24 odd:bg-background even:bg-secondary">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12 odd:md:flex-row-reverse">
       <div className="md:w-1/2">
         <Icon className="h-12 w-12 text-primary mb-4" />
         <h2 className="text-3xl font-bold text-foreground mb-4">{title}</h2>
         <p className="text-lg text-muted-foreground mb-6">{description}</p>
-         <Button variant="link" asChild><Link href="/client/home">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Link></Button>
+         <Button variant="link" asChild className="text-primary hover:text-primary/80 px-0"><Link href={ctaLink}>{ctaText} <ArrowRight className="ml-2 h-4 w-4"/></Link></Button>
       </div>
       <div className="md:w-1/2">
         <Image
@@ -279,46 +277,46 @@ const PlaceholderSection = ({ title, icon: Icon, description, imageHint, imageUr
 
 
 const additionalSectionsData = [
-  { title: "Brand Management Hub", icon: Building, description: "Organize and manage all the brands you collaborate with for promotions, all in one place.", imageHint: "brand logos collage", imageUrlSeed: "brands" },
-  { title: "Promotional Item Discovery", icon: ShoppingCart, description: "Explore a diverse catalog of products, services, and digital goods ready for promotion.", imageHint: "product showcase", imageUrlSeed: "promoitems" },
-  { title: "Dynamic Campaign Creation", icon: Megaphone, description: "Launch targeted promotional campaigns with customizable parameters and track their progress.", imageHint: "campaign planning", imageUrlSeed: "campaigns" },
-  { title: "Smart Affiliate Link Generation", icon: LinkIcon, description: "Easily create and manage unique affiliate links for every promotional item and campaign.", imageHint: "link network", imageUrlSeed: "links" },
-  { title: "Content Monetization Tools", icon: FileText, description: "Integrate promotional content and track ad revenue alongside your affiliate earnings.", imageHint: "writing tools", imageUrlSeed: "contenttools" },
-  { title: "Advanced Trend Prediction", icon: Lightbulb, description: "Stay ahead with AI-driven insights into market trends and profitable niches for promotion.", imageHint: "future graph", imageUrlSeed: "trends" },
-  { title: "Multi-Platform Integration", icon: Share2, description: "Connect PromoMarket with your favorite e-commerce platforms, social media, and marketing tools.", imageHint: "connected devices", imageUrlSeed: "integration" },
-  { title: "Customizable Dashboards", icon: LayoutGrid, description: "Personalize your dashboard to see the metrics that matter most for your promotional efforts.", imageHint: "dashboard interface", imageUrlSeed: "dashboards" },
-  { title: "Deep Dive Analytics Suite", icon: PieChart, description: "Go beyond surface-level data with granular insights into campaign performance and customer behavior.", imageHint: "analytics charts", imageUrlSeed: "deepanalytics" },
-  { title: "Versatile Content Generation AI", icon: Type, description: "Create blog posts, social media updates, email campaigns, and ad copy with AI assistance.", imageHint: "ai writing", imageUrlSeed: "aicontent" },
-  { title: "For Affiliate Marketers", icon: Target, description: "Specialized tools for link management, commission tracking, and discovering high-impact items.", imageHint: "marketing strategy", imageUrlSeed: "affiliates" },
-  { title: "Empowering Content Creators", icon: Camera, description: "Monetize your passion by finding relevant items to promote and track earnings from your content.", imageHint: "creative workspace", imageUrlSeed: "creators" },
-  { title: "Growth for Entrepreneurs", icon: Briefcase, description: "Scale your online ventures by diversifying promotional channels and optimizing marketing spend.", imageHint: "business growth", imageUrlSeed: "entrepreneurs" },
-  { title: "Success Stories & Case Studies", icon: Award, description: "Discover how users have transformed their digital promotions and earnings with PromoMarket.", imageHint: "success trophy", imageUrlSeed: "success" },
-  { title: "Robust Security & Reliability", icon: Server, description: "Your data security and platform reliability are our top priorities, with industry-standard measures.", imageHint: "data security", imageUrlSeed: "security" },
-  { title: "Community & Support", icon: Users2, description: "Connect with fellow users, share strategies, and get support from our active community and helpdesk.", imageHint: "community people", imageUrlSeed: "community" },
+  { title: "Brand Management Hub", icon: Building, description: "Efficiently organize and manage all brands you collaborate with for promotions, centralizing assets and communication for streamlined digital marketing efforts.", imageHint: "brand logos collage", imageUrlSeed: "brands", ctaLink: "/dashboard/brands", ctaText: "Manage Your Brands" },
+  { title: "Promotional Item Discovery", icon: ShoppingCart, description: "Explore a diverse and curated catalog of products, services, and digital goods perfectly suited for your promotional activities in the digital market.", imageHint: "product showcase", imageUrlSeed: "promoitems", ctaLink: "/client/promotions", ctaText: "Discover Items" },
+  { title: "Dynamic Campaign Creation", icon: Megaphone, description: "Launch targeted promotional campaigns with customizable parameters, track real-time progress, and optimize for maximum impact in the digital market space.", imageHint: "campaign planning", imageUrlSeed: "campaigns", ctaLink: "/dashboard/campaigns", ctaText: "Create Campaigns" },
+  { title: "Smart Affiliate Link Generation", icon: LinkIcon, description: "Easily create, manage, and track unique affiliate links for every promotional item and campaign, simplifying a crucial aspect of digital market promotions.", imageHint: "link network", imageUrlSeed: "links", ctaLink: "/dashboard/affiliate-links", ctaText: "Generate Links" },
+  { title: "Content Monetization Tools", icon: FileText, description: "Seamlessly integrate promotional content across your platforms and track ad revenue alongside affiliate earnings, boosting your digital market income.", imageHint: "writing tools", imageUrlSeed: "contenttools", ctaLink: "/dashboard/content-management", ctaText: "Monetize Content" },
+  { title: "Advanced Trend Prediction", icon: Lightbulb, description: "Stay ahead of the curve with AI-driven insights into emerging digital market trends and identify profitable niches for your next big promotion.", imageHint: "future graph", imageUrlSeed: "trends", ctaLink: "/dashboard/product-recommender", ctaText: "Predict Trends" },
+  { title: "Multi-Platform Integration", icon: Share2, description: "Connect PromoMarket with your favorite e-commerce platforms, social media channels, and essential marketing tools for a cohesive digital promotion strategy.", imageHint: "connected devices", imageUrlSeed: "integration" },
+  { title: "Customizable Promotion Dashboards", icon: LayoutGrid, description: "Personalize your dashboard to display the key performance indicators and metrics that matter most for your specific digital market promotional efforts.", imageHint: "dashboard interface", imageUrlSeed: "dashboards", ctaLink: "/dashboard", ctaText: "View Dashboard" },
+  { title: "Deep Dive Analytics Suite", icon: PieChart, description: "Go beyond surface-level data with granular insights into campaign performance, audience behavior, and conversion funnels in the digital market.", imageHint: "analytics charts", imageUrlSeed: "deepanalytics", ctaLink: "/dashboard/earnings-tracker", ctaText: "Analyze Performance" },
+  { title: "Versatile AI Content Generation", icon: Type, description: "Effortlessly create engaging blog posts, compelling social media updates, effective email campaigns, and persuasive ad copy with our AI-powered writing assistant for your promotions.", imageHint: "ai writing", imageUrlSeed: "aicontent", ctaLink: "/dashboard/marketing-content-generator", ctaText: "Generate AI Content" },
+  { title: "Dedicated Tools for Affiliate Marketers", icon: Target, description: "Optimize your affiliate marketing strategy with specialized tools for link management, precise commission tracking, and discovering high-impact promotional items.", imageHint: "marketing strategy", imageUrlSeed: "affiliates" },
+  { title: "Empowering Content Creators", icon: Camera, description: "Monetize your passion by finding relevant promotional items, generating engaging marketing content, and tracking earnings from your creative work in the digital market.", imageHint: "creative workspace", imageUrlSeed: "creators" },
+  { title: "Growth Solutions for Entrepreneurs", icon: Briefcase, description: "Scale your online ventures by diversifying promotional channels, managing collaborations efficiently, and optimizing your marketing spend in the digital market.", imageHint: "business growth", imageUrlSeed: "entrepreneurs" },
+  { title: "Inspiring Success Stories", icon: Award, description: "Discover how fellow digital marketers and promoters have transformed their online presence and earnings using PromoMarket's powerful suite of tools.", imageHint: "success trophy", imageUrlSeed: "successstories" },
+  { title: "Robust Security & Platform Reliability", icon: Server, description: "Your data security and platform uptime are our top priorities. PromoMarket employs industry-standard measures to protect your promotional assets and earnings information.", imageHint: "data security", imageUrlSeed: "security" },
+  { title: "Vibrant Community & Support", icon: Users2, description: "Connect with a network of digital promoters, share winning strategies, and get timely support from our active community and dedicated helpdesk.", imageHint: "community people", imageUrlSeed: "community", ctaLink: "/client/contact", ctaText: "Get Support" },
 ];
 
 
 const FAQSection = () => {
   const faqs = [
     {
-      question: "What is PromoMarket?",
-      answer: "PromoMarket is a comprehensive platform designed to help individuals and businesses manage and optimize their digital market promotions through AI-powered tools, analytics, brand and item management, campaign creation, and content monetization features."
+      question: "What is PromoMarket and how does it help with digital market promotions?",
+      answer: "PromoMarket is a comprehensive platform designed to help individuals and businesses manage and optimize their digital market promotions. It offers AI-powered tools for item recommendations and content generation, robust analytics, and centralized management for brands, promotional items, campaigns, and affiliate links, all aimed at maximizing your online impact and earnings."
     },
     {
-      question: "How does the AI item recommender work for promotions?",
-      answer: "Our AI analyzes target audience profiles, interests, and market trends to suggest relevant and high-converting promotional items (products, services, campaigns) for you to promote effectively."
+      question: "How does the AI promotional item recommender work?",
+      answer: "Our AI analyzes target audience profiles, interests, and current digital market trends to suggest relevant and high-converting promotional items (including products, services, and campaigns) tailored to your specific promotional needs and audience."
     },
     {
-      question: "Is there a free trial or a free plan for PromoMarket?",
-      answer: "Yes, PromoMarket offers a free tier with basic features to get you started. We also have premium plans with more advanced promotional capabilities and higher usage limits."
+      question: "What kind of support can I expect for my digital promotion activities?",
+      answer: "PromoMarket provides access to a resource library, a community forum to connect with other promoters, and a dedicated helpdesk for technical and strategic assistance to ensure your digital marketing efforts are successful."
     },
     {
-      question: "Can I manage multiple brands and their promotional items?",
-      answer: "Absolutely! PromoMarket allows you to manage multiple brands, their specific categories, and a wide array of promotional items associated with them."
+      question: "Can I manage promotions for multiple brands or products?",
+      answer: "Absolutely! PromoMarket is built to handle multiple brands, their specific product categories, and a diverse array of promotional items. You can organize and track all your digital market promotions efficiently from one dashboard."
     },
     {
-      question: "How does campaign management work?",
-      answer: "You can create detailed promotional campaigns, associate them with specific items or brands, set start and end dates, define commission rates, and track their performance through clicks and conversions."
+      question: "How does PromoMarket help in creating and managing promotional campaigns?",
+      answer: "You can create detailed promotional campaigns, associate them with specific items or brands, define target audiences, set start and end dates, establish commission structures, and track their performance in real-time through comprehensive analytics on clicks, conversions, and overall ROI for your digital market initiatives."
     }
   ];
 
@@ -329,7 +327,7 @@ const FAQSection = () => {
           <HelpCircle className="h-12 w-12 text-primary mb-4 mx-auto" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Frequently Asked Questions</h2>
           <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-            Got questions about PromoMarket? We've got answers.
+            Got questions about maximizing your digital market promotions with PromoMarket? We've got answers.
           </p>
         </div>
         <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
@@ -398,7 +396,7 @@ export default function LandingPage() {
         <KeyFeaturesSection />
         <HowItWorksSection />
         <TestimonialsSection />
-        {additionalSectionsData.map(sec => <PlaceholderSection key={sec.imageUrlSeed} {...sec} />)}
+        {additionalSectionsData.map(sec => <DetailedFeatureSection key={sec.imageUrlSeed} {...sec} />)}
         <FAQSection />
         <FinalCTASection />
       </main>

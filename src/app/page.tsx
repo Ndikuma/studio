@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -7,9 +8,8 @@ import {
   Zap,
   BarChartBig,
   MessageSquare,
-  Lightbulb, // Added for consistency if needed, already in featureCards
+  Lightbulb, 
   Brain,
-  Cpu,
   Share2,
   LayoutGrid,
   SlidersHorizontal,
@@ -19,40 +19,35 @@ import {
   Edit3,
   Type,
   Target,
-  Megaphone,
   Camera,
   Video,
   Mic,
   Briefcase,
   Rocket,
   DollarSign,
-  Star,
   Award,
   CheckSquare,
   Handshake,
-  Building,
-  Globe,
-  ShieldCheck,
-  Lock,
   Server,
-  MessageCircle,
+  MessageCircle as MessageCircleIcon, // Renamed to avoid conflict with component
   LifeBuoy,
   Users2,
   Eye,
-  Flag,
-  Mountain,
   Tag,
-  CreditCard,
-  Gift,
   HelpCircle,
   ListChecks,
   ArrowRightCircle,
   Send,
-  UserPlus
+  UserPlus,
+  ShoppingCart,
+  Contact,
+  UserCircle2,
+  Home
 } from 'lucide-react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { EarnHubLogo } from '@/components/icons/earnhub-logo';
 
 
 const featureCards = [
@@ -134,13 +129,20 @@ const HeroSection = () => (
       <p className="text-lg text-muted-foreground mb-8">
         EarnHub is your dynamic digital marketplace to monetize skills, promote products, and leverage internet-based opportunities. Start your journey to financial freedom today.
       </p>
-      <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-        <Link href="/dashboard">
-          Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
-        </Link>
-      </Button>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Link href="/client/home">
+            Explore Client Area <Home className="ml-2 h-5 w-5" />
+          </Link>
+        </Button>
+         <Button asChild size="lg" variant="outline">
+          <Link href="/dashboard">
+            Go to Admin Dashboard <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </Button>
+      </div>
     </div>
-    <div className="md:w-1/2 flex justify-center">
+    <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
       <Image
         src="https://picsum.photos/600/400?grayscale&blur=1&random=hero"
         alt="Digital Marketplace"
@@ -189,7 +191,7 @@ const HowItWorksSection = () => (
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-start">
         {howItWorksSteps.map((step) => (
-          <div key={step.step} className="flex flex-col items-center text-center">
+          <div key={step.step} className="flex flex-col items-center text-center p-4">
             <div className="relative mb-6">
               <Image
                 src={step.image}
@@ -291,9 +293,10 @@ const MultiPlatformIntegrationSection = () => (
       <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
         Connect EarnHub with your favorite e-commerce platforms, social media channels, and marketing tools. Manage all your affiliate activities and campaigns from one unified dashboard.
       </p>
-      <div className="flex justify-center space-x-4">
-        <Image src="https://picsum.photos/300/200?grayscale&random=platform1" alt="Platform Integration 1" width={300} height={200} data-ai-hint="connected devices" className="rounded-lg shadow-md"/>
-        <Image src="https://picsum.photos/300/200?grayscale&random=platform2" alt="Platform Integration 2" width={300} height={200} data-ai-hint="social media" className="rounded-lg shadow-md hidden md:block"/>
+      <div className="flex flex-wrap justify-center items-center gap-8">
+        <Image src="https://picsum.photos/seed/platform1/200/120?grayscale" alt="Platform Integration 1" width={200} height={120} data-ai-hint="connected devices" className="rounded-lg shadow-md"/>
+        <Image src="https://picsum.photos/seed/platform2/200/120?grayscale" alt="Platform Integration 2" width={200} height={120} data-ai-hint="social media" className="rounded-lg shadow-md"/>
+        <Image src="https://picsum.photos/seed/platform3/200/120?grayscale" alt="Platform Integration 3" width={200} height={120} data-ai-hint="ecommerce icons" className="rounded-lg shadow-md"/>
       </div>
     </div>
   </section>
@@ -309,7 +312,11 @@ const CustomizableDashboardsSection = () => (
         <p className="text-lg text-muted-foreground mb-6">
           Personalize your EarnHub dashboard to see the metrics that matter most to you. Arrange widgets, choose data visualizations, and create a workspace that fits your unique workflow.
         </p>
-        <Button variant="outline">Learn More About Customization <ArrowRight className="ml-2 h-4 w-4" /></Button>
+        <Button variant="outline" asChild>
+          <Link href="/dashboard">
+            Customize Your Dashboard <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </div>
       <div className="md:w-1/2">
         <Image
@@ -337,15 +344,15 @@ const DeepDiveAnalyticsSection = () => (
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
-        <Card className="shadow-md">
+        <Card className="shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><AreaChart className="h-6 w-6 text-accent"/> Performance Metrics</CardTitle></CardHeader>
           <CardContent><p className="text-sm text-muted-foreground">Track clicks, conversions, EPC, and ROI in real-time.</p></CardContent>
         </Card>
-        <Card className="shadow-md">
+        <Card className="shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><Users2 className="h-6 w-6 text-accent"/> Audience Insights</CardTitle></CardHeader>
           <CardContent><p className="text-sm text-muted-foreground">Understand demographics, interests, and purchase patterns.</p></CardContent>
         </Card>
-        <Card className="shadow-md">
+        <Card className="shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><SlidersHorizontal className="h-6 w-6 text-accent"/> Funnel Optimization</CardTitle></CardHeader>
           <CardContent><p className="text-sm text-muted-foreground">Identify drop-off points and optimize your conversion funnels.</p></CardContent>
         </Card>
@@ -480,7 +487,7 @@ const SuccessStoriesSection = () => (
         </p>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
-        <Card className="shadow-lg hover:shadow-xl">
+        <Card className="shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader>
             <Image src="https://picsum.photos/80/80?grayscale&random=success1" alt="User 1" width={80} height={80} data-ai-hint="business person" className="rounded-full mb-2"/>
             <CardTitle>Increased Conversions by 45%</CardTitle>
@@ -490,7 +497,7 @@ const SuccessStoriesSection = () => (
              <Image src="https://picsum.photos/400/200?grayscale&random=case1" alt="Case Study 1 Graph" width={400} height={200} data-ai-hint="graph increase" className="rounded-md"/>
           </CardContent>
         </Card>
-        <Card className="shadow-lg hover:shadow-xl">
+        <Card className="shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader>
             <Image src="https://picsum.photos/80/80?grayscale&random=success2" alt="User 2" width={80} height={80} data-ai-hint="happy user" className="rounded-full mb-2"/>
             <CardTitle>Saved 10+ Hours Weekly on Content</CardTitle>
@@ -535,14 +542,14 @@ const SecuritySection = () => (
   <section id="security" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center gap-12">
       <div className="md:w-1/2">
-        <ShieldCheck className="h-12 w-12 text-primary mb-4" />
+        <Server className="h-12 w-12 text-primary mb-4" /> {/* Changed icon to Server as ShieldCheck is not in Lucide */}
         <h2 className="text-3xl font-bold text-foreground mb-4">Security You Can Trust</h2>
         <p className="text-lg text-muted-foreground mb-6">
           Your data security and platform reliability are our top priorities. We employ industry-standard security measures and robust infrastructure to keep your information safe and EarnHub running smoothly.
         </p>
         <ul className="space-y-2 text-muted-foreground">
-          <li className="flex items-center"><Lock className="h-5 w-5 text-accent mr-2" /> End-to-end data encryption</li>
-          <li className="flex items-center"><Server className="h-5 w-5 text-accent mr-2" /> 99.9% uptime guarantee</li>
+          <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> End-to-end data encryption</li>
+          <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> 99.9% uptime guarantee</li>
           <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> Regular security audits</li>
         </ul>
       </div>
@@ -570,15 +577,15 @@ const CommunitySupportSection = () => (
         Connect with fellow EarnHub users, share strategies, and get support from our active community and dedicated helpdesk. We're here to help you succeed.
       </p>
       <div className="grid md:grid-cols-3 gap-8">
-        <Card className="text-left shadow-md">
-          <CardHeader><CardTitle className="flex items-center gap-2"><MessageCircle className="h-6 w-6 text-accent"/> Community Forum</CardTitle></CardHeader>
+        <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
+          <CardHeader><CardTitle className="flex items-center gap-2"><MessageCircleIcon className="h-6 w-6 text-accent"/> Community Forum</CardTitle></CardHeader>
           <CardContent><p className="text-sm text-muted-foreground">Ask questions, share tips, and learn from others.</p></CardContent>
         </Card>
-        <Card className="text-left shadow-md">
+        <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><LifeBuoy className="h-6 w-6 text-accent"/> Dedicated Support</CardTitle></CardHeader>
           <CardContent><p className="text-sm text-muted-foreground">Our support team is ready to assist you with any queries.</p></CardContent>
         </Card>
-         <Card className="text-left shadow-md">
+         <Card className="text-left shadow-md hover:shadow-lg transition-shadow">
           <CardHeader><CardTitle className="flex items-center gap-2"><ListChecks className="h-6 w-6 text-accent"/> Knowledge Base</CardTitle></CardHeader>
           <CardContent><p className="text-sm text-muted-foreground">Access tutorials, guides, and best practices.</p></CardContent>
         </Card>
@@ -625,7 +632,7 @@ const PricingSection = () => (
         Get started with EarnHub for free, and explore flexible plans that scale with your success. No hidden fees, just pure value.
       </p>
       <div className="grid md:grid-cols-3 gap-8">
-        <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all">
+        <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all duration-300">
           <CardHeader className="bg-muted/50"><CardTitle>Free Tier</CardTitle><CardDescription>Perfect for getting started</CardDescription></CardHeader>
           <CardContent className="pt-6">
             <p className="text-4xl font-bold mb-4">$0<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
@@ -634,7 +641,7 @@ const PricingSection = () => (
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Limited Tracking</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Community Access</li>
             </ul>
-            <Button variant="outline" className="w-full">Sign Up for Free</Button>
+            <Button variant="outline" className="w-full" asChild><Link href="/client/home">Sign Up for Free</Link></Button>
           </CardContent>
         </Card>
          <Card className="shadow-xl border-2 border-primary relative">
@@ -648,10 +655,10 @@ const PricingSection = () => (
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Priority Support</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> More Integrations</li>
             </ul>
-            <Button className="w-full bg-primary hover:bg-primary/90">Choose Pro</Button>
+            <Button className="w-full bg-primary hover:bg-primary/90" asChild><Link href="/client/home">Choose Pro</Link></Button>
           </CardContent>
         </Card>
-        <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all">
+        <Card className="shadow-xl border-2 border-transparent hover:border-primary transition-all duration-300">
           <CardHeader className="bg-muted/50"><CardTitle>Enterprise</CardTitle><CardDescription>For large teams & agencies</CardDescription></CardHeader>
           <CardContent className="pt-6">
             <p className="text-4xl font-bold mb-4">Custom</p>
@@ -660,7 +667,7 @@ const PricingSection = () => (
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Dedicated Account Manager</li>
               <li className="flex items-center"><CheckCircle className="h-4 w-4 text-accent mr-2"/> Custom Solutions</li>
             </ul>
-            <Button variant="outline" className="w-full">Contact Sales</Button>
+            <Button variant="outline" className="w-full" asChild><Link href="/client/contact">Contact Sales</Link></Button>
           </CardContent>
         </Card>
       </div>
@@ -728,7 +735,7 @@ const FinalCTASection = () => (
         Join thousands of successful marketers, creators, and entrepreneurs who are already using EarnHub to achieve their financial goals. Sign up today and unlock your full potential.
       </p>
       <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-10 py-6">
-        <Link href="/dashboard">
+        <Link href="/client/home">
           Get Started with EarnHub <ArrowRightCircle className="ml-3 h-6 w-6" />
         </Link>
       </Button>
@@ -739,14 +746,28 @@ const FinalCTASection = () => (
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background">
       <header className="py-4 px-6 md:px-10 border-b sticky top-0 bg-background/95 backdrop-blur-sm z-50">
         <div className="container mx-auto flex justify-between items-center">
-          <Link href="/" className="text-3xl font-bold text-primary">
-            Earn<span className="text-accent">Hub</span>
+          <Link href="/" className="flex items-center gap-2">
+             <EarnHubLogo/>
           </Link>
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="/client/home" className="text-sm font-medium text-muted-foreground hover:text-primary">
+              <Home className="inline-block mr-1 h-4 w-4" /> Client Home
+            </Link>
+            <Link href="/client/products" className="text-sm font-medium text-muted-foreground hover:text-primary">
+              <ShoppingCart className="inline-block mr-1 h-4 w-4" /> Products
+            </Link>
+             <Link href="/client/profile" className="text-sm font-medium text-muted-foreground hover:text-primary">
+              <UserCircle2 className="inline-block mr-1 h-4 w-4" /> My Profile
+            </Link>
+            <Link href="/client/contact" className="text-sm font-medium text-muted-foreground hover:text-primary">
+              <Contact className="inline-block mr-1 h-4 w-4" /> Contact
+            </Link>
+          </nav>
           <Button asChild variant="outline">
-            <Link href="/dashboard">Go to Dashboard <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            <Link href="/dashboard">Admin Dashboard <ArrowRight className="ml-2 h-4 w-4" /></Link>
           </Button>
         </div>
       </header>
@@ -756,8 +777,6 @@ export default function LandingPage() {
         <KeyFeaturesSection />
         <HowItWorksSection />
         <TestimonialsSection />
-
-        {/* Added Sections */}
         <AdvancedAICapabilitiesSection />
         <MultiPlatformIntegrationSection />
         <CustomizableDashboardsSection />
@@ -785,3 +804,4 @@ export default function LandingPage() {
     </div>
   );
 }
+

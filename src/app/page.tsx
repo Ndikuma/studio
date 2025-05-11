@@ -47,11 +47,13 @@ import {
   Link2 as LinkIcon, 
   TrendingUp,
   PenLine,
+  Info,
 } from 'lucide-react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { PromoMarketLogo } from '@/components/icons/promomarket-logo';
+import { Badge } from '@/components/ui/badge';
 
 
 const featureCards = [
@@ -169,9 +171,14 @@ const testimonialCards = [
 const HeroSection = () => (
   <section className="container mx-auto px-6 md:px-10 py-12 md:py-24 flex flex-col md:flex-row items-center">
     <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-        Amplify Your Digital Promotions with <span className="text-primary">AI Precision</span>
-      </h1>
+      <div className="flex items-center justify-center md:justify-start mb-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+          Amplify Your Digital Promotions with <span className="text-primary">AI Precision</span>
+        </h1>
+        <Badge variant="outline" className="ml-3 text-lg bg-blue-100 border-blue-500 text-primary dark:bg-blue-900 dark:border-blue-700 dark:text-blue-300">
+          Beta
+        </Badge>
+      </div>
       <p className="text-lg text-muted-foreground mb-8 max-w-xl">
         Transform your marketing strategy with PromoMarket. Leverage intelligent tools to discover top items, create stunning content, manage campaigns effortlessly, and skyrocket your earnings. Your success in the digital market starts here.
       </p>
@@ -187,10 +194,13 @@ const HeroSection = () => (
           </Link>
         </Button>
       </div>
+      <p className="mt-6 text-sm text-muted-foreground">
+        Currently in Beta. Features are subject to change. Your feedback is valuable!
+      </p>
     </div>
     <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
       <Image
-        src="https://picsum.photos/seed/digitalmarket/600/450?grayscale"
+        src="https://picsum.photos/seed/digitalmarket/600/450"
         alt="PromoMarket Digital Marketing Platform"
         width={600}
         height={450}
@@ -402,6 +412,386 @@ const FinalCTASection = () => (
   </section>
 );
 
+// Additional Sections for Home Page
+const WhyDigitalPromotionSection = () => (
+  <section className="py-16 md:py-24">
+    <div className="container mx-auto px-6 md:px-10">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <Image
+            src="https://picsum.photos/seed/digitalgrowth/500/400"
+            alt="Digital Growth Concept"
+            width={500}
+            height={400}
+            data-ai-hint="digital growth chart"
+            className="rounded-xl shadow-xl object-cover"
+          />
+        </div>
+        <div className="text-center md:text-left">
+          <Rocket className="h-12 w-12 text-primary mb-4 mx-auto md:mx-0" />
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">The Power of Digital Promotion</h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            In today's digital landscape, effective promotion is key to standing out. Reach a wider audience, build brand loyalty, and drive significant revenue growth through targeted and data-driven marketing strategies.
+          </p>
+          <ul className="space-y-3 text-left">
+            <li className="flex items-start">
+              <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 shrink-0" />
+              <span>Expand your reach to global audiences instantly.</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 shrink-0" />
+              <span>Gain valuable insights with measurable results and analytics.</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 shrink-0" />
+              <span>Achieve higher conversion rates with targeted campaigns.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const TargetAudienceSection = () => {
+  const audiences = [
+    { icon: Briefcase, name: "Businesses & Brands", description: "Elevate your brand presence and product sales through our network of skilled promoters." },
+    { icon: Users2, name: "Affiliate Marketers", description: "Discover top-tier products and campaigns to promote, armed with powerful link tracking and analytics." },
+    { icon: Edit3, name: "Content Creators", description: "Monetize your content by seamlessly integrating promotions and tracking your earnings from various sources." },
+    { icon: Megaphone, name: "Campaign Managers", description: "Streamline your campaign planning, execution, and monitoring with our intuitive management tools." },
+  ];
+  return (
+    <section className="py-16 md:py-24 bg-secondary">
+      <div className="container mx-auto px-6 md:px-10">
+        <div className="text-center mb-12">
+          <Target className="h-12 w-12 text-primary mb-4 mx-auto" />
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Who Can Benefit from PromoMarket?</h2>
+          <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+            PromoMarket is designed for a diverse range of users in the digital marketing ecosystem.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {audiences.map(audience => (
+            <Card key={audience.name} className="text-center shadow-md hover:shadow-lg transition-shadow bg-card">
+              <CardHeader>
+                <audience.icon className="h-10 w-10 text-accent mx-auto mb-3" />
+                <CardTitle className="text-lg">{audience.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">{audience.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ContentTypesSection = () => {
+   const contentTypes = [
+    { icon: FileText, name: "Blog Posts & Articles", description: "Generate SEO-friendly written content to drive organic traffic." },
+    { icon: Video, name: "Video Marketing", description: "Create engaging video scripts for product reviews, tutorials, and social content." },
+    { icon: MessageSquare, name: "Social Media Updates", description: "Craft catchy posts for platforms like Instagram, Twitter, and Facebook." },
+    { icon: Type, name: "Email Marketing Copy", description: "Develop persuasive email campaigns to nurture leads and drive sales." },
+    { icon: Mic, name: "Podcast Scripts", description: "Outline engaging podcast episodes to connect with your audience." },
+    { icon: Camera, name: "Ad Copy", description: "Write compelling ad copy for PPC campaigns and social media ads." },
+  ];
+  return (
+    <section className="py-16 md:py-24">
+       <div className="container mx-auto px-6 md:px-10">
+        <div className="text-center mb-12">
+          <SlidersHorizontal className="h-12 w-12 text-primary mb-4 mx-auto" />
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Versatile Content Creation</h2>
+          <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+            Our AI helps you generate a wide variety of content types tailored for digital promotion.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {contentTypes.map(type => (
+             <Card key={type.name} className="bg-card shadow-sm hover:shadow-md transition-shadow p-6">
+              <div className="flex items-start gap-4">
+                <type.icon className="h-8 w-8 text-accent shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{type.name}</h3>
+                  <p className="text-sm text-muted-foreground">{type.description}</p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AnalyticsFeaturesSection = () => {
+  const features = [
+    { icon: PieChart, name: "Earnings Overview", description: "Track total earnings, source breakdown (affiliate, ads, campaigns)." },
+    { icon: LinkIcon, name: "Link Performance", description: "Monitor clicks, conversions, and CTR for each affiliate link." },
+    { icon: AreaChart, name: "Campaign Analytics", description: "Analyze campaign reach, engagement, and ROI." },
+    { icon: FileText, name: "Content Insights", description: "Understand which content pieces drive the most engagement and revenue." },
+    { icon: Users2, name: "Audience Demographics", description: "Get insights into your audience (if platform integrated)." },
+    { icon: TrendingUp, name: "Trend Reports", description: "Identify performing items, campaigns, and content over time." },
+  ];
+   return (
+    <section className="py-16 md:py-24 bg-secondary">
+      <div className="container mx-auto px-6 md:px-10">
+        <div className="text-center mb-12">
+          <BarChartBig className="h-12 w-12 text-primary mb-4 mx-auto" />
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Data-Driven Decisions with Powerful Analytics</h2>
+          <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+            PromoMarket provides comprehensive analytics to track your success and optimize strategies.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map(feature => (
+            <Card key={feature.name} className="bg-card shadow-md hover:shadow-lg transition-shadow">
+              <CardHeader className="items-center">
+                <feature.icon className="h-10 w-10 text-accent mb-2" />
+                <CardTitle className="text-lg text-center">{feature.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground text-center">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const IntegrationSection = () => (
+  <section className="py-16 md:py-24">
+    <div className="container mx-auto px-6 md:px-10">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="text-center md:text-left">
+          <Share2 className="h-12 w-12 text-primary mb-4 mx-auto md:mx-0" />
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Seamless Integrations</h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            PromoMarket aims to connect with the tools you already use. While direct integrations are evolving, our platform is designed for easy data export and flexible use alongside your existing marketing stack.
+          </p>
+          <ul className="space-y-2 text-muted-foreground">
+            <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> Export data for use in other analytics platforms.</li>
+            <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> Easily share generated content on various channels.</li>
+            <li className="flex items-center"><CheckSquare className="h-5 w-5 text-accent mr-2" /> API access for custom solutions (Planned Feature).</li>
+          </ul>
+        </div>
+        <div>
+          <Image
+            src="https://picsum.photos/seed/integration/500/350"
+            alt="Integration Concept"
+            width={500}
+            height={350}
+            data-ai-hint="network connection puzzle"
+            className="rounded-xl shadow-xl object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const SecuritySection = () => (
+  <section className="py-16 md:py-24 bg-secondary">
+    <div className="container mx-auto px-6 md:px-10 text-center">
+      <Server className="h-12 w-12 text-primary mb-4 mx-auto" />
+      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Secure & Reliable Platform</h2>
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        We prioritize the security of your data and the reliability of our services. PromoMarket employs industry-standard security practices to protect your information and ensure platform uptime, so you can focus on your promotions with peace of mind.
+      </p>
+    </div>
+  </section>
+);
+
+const CommunitySupportSection = () => (
+  <section className="py-16 md:py-24">
+    <div className="container mx-auto px-6 md:px-10">
+      <div className="text-center mb-12">
+        <Handshake className="h-12 w-12 text-primary mb-4 mx-auto" />
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Join Our Community & Get Support</h2>
+        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+          Connect with fellow marketers, share insights, and get help when you need it.
+        </p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-8">
+        <Card className="text-center shadow-md hover:shadow-lg transition-shadow bg-card">
+          <CardHeader>
+            <MessageCircleIcon className="h-10 w-10 text-accent mx-auto mb-2" />
+            <CardTitle>Community Forum</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">Engage in discussions, ask questions, and learn from other PromoMarket users. (Coming Soon)</p>
+          </CardContent>
+        </Card>
+        <Card className="text-center shadow-md hover:shadow-lg transition-shadow bg-card">
+          <CardHeader>
+            <HelpCircle className="h-10 w-10 text-accent mx-auto mb-2" />
+            <CardTitle>Resource Library</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">Access guides, tutorials, and best practices to enhance your promotion skills.</p>
+          </CardContent>
+           <CardFooter>
+             <Button asChild variant="link" className="mx-auto">
+               <Link href="/dashboard/resources">Explore Resources <ArrowRight className="ml-1 h-4 w-4" /></Link>
+             </Button>
+           </CardFooter>
+        </Card>
+        <Card className="text-center shadow-md hover:shadow-lg transition-shadow bg-card">
+          <CardHeader>
+            <LifeBuoy className="h-10 w-10 text-accent mx-auto mb-2" />
+            <CardTitle>Dedicated Support</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">Our support team is ready to assist you with any platform-related queries or issues.</p>
+          </CardContent>
+           <CardFooter>
+             <Button asChild variant="link" className="mx-auto">
+               <Link href="/client/contact">Contact Support <ArrowRight className="ml-1 h-4 w-4" /></Link>
+             </Button>
+           </CardFooter>
+        </Card>
+      </div>
+    </div>
+  </section>
+);
+
+const PricingSection = () => (
+  <section className="py-16 md:py-24 bg-secondary">
+    <div className="container mx-auto px-6 md:px-10">
+      <div className="text-center mb-12">
+        <DollarSign className="h-12 w-12 text-primary mb-4 mx-auto" />
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Flexible Pricing Plans</h2>
+        <p className="text-lg text-muted-foreground mt-2 max-w-xl mx-auto">
+          Choose a plan that fits your needs. Currently, PromoMarket is in Beta and free to use!
+        </p>
+      </div>
+      <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-md mx-auto">
+        <Card className="shadow-xl border-2 border-primary flex flex-col">
+          <CardHeader className="text-center bg-primary/10">
+            <Badge variant="default" className="mx-auto mb-2 text-sm">Beta Access</Badge>
+            <CardTitle className="text-3xl font-bold text-primary">Free Early Access</CardTitle>
+            <CardDescription className="text-lg text-muted-foreground">$0 / month (During Beta)</CardDescription>
+          </CardHeader>
+          <CardContent className="p-6 flex-grow">
+            <ul className="space-y-3">
+              <li className="flex items-center"><ListChecks className="h-5 w-5 text-green-500 mr-2" /> Access to all core features</li>
+              <li className="flex items-center"><ListChecks className="h-5 w-5 text-green-500 mr-2" /> AI Product Recommendations</li>
+              <li className="flex items-center"><ListChecks className="h-5 w-5 text-green-500 mr-2" /> AI Content Generation</li>
+              <li className="flex items-center"><ListChecks className="h-5 w-5 text-green-500 mr-2" /> Earnings & Campaign Tracking</li>
+              <li className="flex items-center"><ListChecks className="h-5 w-5 text-green-500 mr-2" /> Early access to new features</li>
+              <li className="flex items-center"><ListChecks className="h-5 w-5 text-green-500 mr-2" /> Opportunity to provide feedback</li>
+            </ul>
+          </CardContent>
+          <CardFooter className="p-6">
+            <Button size="lg" className="w-full text-lg" asChild>
+              <Link href="/client/home">Join the Beta Program <ArrowRightCircle className="ml-2 h-5 w-5" /></Link>
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
+       <p className="text-center text-muted-foreground mt-8">
+        Future pricing will be announced post-beta. Early adopters may receive special offers.
+      </p>
+    </div>
+  </section>
+);
+
+
+const GlossarySection = () => (
+  <section className="py-16 md:py-24">
+    <div className="container mx-auto px-6 md:px-10">
+      <div className="text-center mb-12">
+        <Info className="h-12 w-12 text-primary mx-auto mb-4" />
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Digital Marketing Glossary</h2>
+        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+          Understanding key terms in the world of digital promotion.
+        </p>
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card className="bg-card shadow-sm p-4">
+          <CardTitle className="text-md font-semibold text-foreground mb-1">Affiliate Marketing</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground">
+            A marketing arrangement where an online retailer pays commission to an external website for traffic or sales generated from its referrals.
+          </CardDescription>
+        </Card>
+        <Card className="bg-card shadow-sm p-4">
+          <CardTitle className="text-md font-semibold text-foreground mb-1">Conversion Rate</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground">
+            The percentage of users who take a desired action (e.g., make a purchase, sign up) out of the total number of visitors.
+          </CardDescription>
+        </Card>
+         <Card className="bg-card shadow-sm p-4">
+          <CardTitle className="text-md font-semibold text-foreground mb-1">SEO (Search Engine Optimization)</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground">
+            The process of improving your site to increase its visibility for relevant searches in search engines like Google.
+          </CardDescription>
+        </Card>
+        <Card className="bg-card shadow-sm p-4">
+          <CardTitle className="text-md font-semibold text-foreground mb-1">CTR (Click-Through Rate)</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground">
+            The ratio of users who click on a specific link to the number of total users who view a page, email, or advertisement.
+          </CardDescription>
+        </Card>
+         <Card className="bg-card shadow-sm p-4">
+          <CardTitle className="text-md font-semibold text-foreground mb-1">ROI (Return on Investment)</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground">
+            A performance measure used to evaluate the efficiency or profitability of an investment or compare the efficiency of several different investments.
+          </CardDescription>
+        </Card>
+         <Card className="bg-card shadow-sm p-4">
+          <CardTitle className="text-md font-semibold text-foreground mb-1">Content Monetization</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground">
+            The process of generating revenue from your online content, through ads, affiliate links, subscriptions, etc.
+          </CardDescription>
+        </Card>
+      </div>
+    </div>
+  </section>
+);
+
+const RoadmapSection = () => (
+  <section className="py-16 md:py-24 bg-secondary">
+    <div className="container mx-auto px-6 md:px-10">
+      <div className="text-center mb-12">
+        <Award className="h-12 w-12 text-primary mb-4 mx-auto" />
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Future of PromoMarket</h2>
+        <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
+          We're constantly working to enhance PromoMarket. Here's a glimpse of what's planned.
+        </p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card className="bg-card shadow-md">
+          <CardHeader>
+            <CardTitle>Upcoming Features</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              <li>Advanced AI-driven trend prediction for promotions.</li>
+              <li>Direct social media platform integrations.</li>
+              <li>Team collaboration tools for agencies.</li>
+              <li>Enhanced reporting and custom dashboard widgets.</li>
+              <li>Marketplace for promoters to connect with brands.</li>
+            </ul>
+          </CardContent>
+        </Card>
+        <Card className="bg-card shadow-md">
+          <CardHeader>
+            <CardTitle>Our Vision</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">
+              Our vision is to make PromoMarket the ultimate, all-in-one platform for digital marketers and promoters worldwide. We aim to empower our users with cutting-edge technology, actionable insights, and a supportive community to achieve unparalleled success in the ever-evolving digital landscape. Your feedback during this beta phase is crucial in shaping this future.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+);
+
 
 export default function LandingPage() {
   return (
@@ -424,6 +814,9 @@ export default function LandingPage() {
             <Link href="/client/contact" className="text-sm font-medium text-muted-foreground hover:text-primary">
               <Contact className="inline-block mr-1 h-4 w-4" /> Contact
             </Link>
+            <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-primary">
+              <HelpCircle className="inline-block mr-1 h-4 w-4" /> FAQ
+            </Link>
           </nav>
           <Button asChild variant="outline">
             <Link href="/dashboard">Admin Dashboard <ArrowRight className="ml-2 h-4 w-4" /></Link>
@@ -433,11 +826,21 @@ export default function LandingPage() {
 
       <main className="flex-grow">
         <HeroSection />
+        <WhyDigitalPromotionSection />
         <KeyFeaturesSection />
         <CoreModulesSection />
+        <TargetAudienceSection />
         <HowItWorksSection />
+        <ContentTypesSection />
         <TestimonialsSection />
+        <AnalyticsFeaturesSection />
+        <IntegrationSection />
+        <PricingSection />
+        <SecuritySection />
+        <GlossarySection />
         <FAQSection />
+        <RoadmapSection />
+        <CommunitySupportSection />
         <FinalCTASection />
       </main>
 
